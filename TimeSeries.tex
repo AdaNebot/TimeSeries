@@ -4,6 +4,7 @@
 \usepackage{todonotes}
 \usepackage{enumitem}
 \usepackage{pdflscape}
+\usepackage{xcolor,colortbl}
 
 \usepackage{listings}
 \lstloadlanguages{XML,sh}
@@ -13,15 +14,18 @@ showstringspaces=False}
 \usepackage{multirow}
 
 \definecolor{LightBlue}{rgb}{0.0,0.318,0.612}
+\definecolor{LighterBlue}{rgb}{0.39,0.7,1}
 
 % Added this comand for my text to be added in blue and boldface
 
 \newcommand\ada[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\elem[1]{\textcolor{LightBlue}{{\tt#1}}}
+\newcommand\celcol[1]{\cellcolor{LighterBlue}{\textbf{#1}}}
+
 %\def\attrval#1#2{{\tt{\fg{DarkRed}#1}="{\fg{DarkPurple}#2}"}}
 %\def\elem#1{{\tt{\fg{DarkRed}#1}}}
 
-\title{Simple Cone Search}
+\title{Time Series Annotation in VOTable}
 \ivoagroup{Data Model}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/AdaNebot]{Ada Nebot}
 \editor{Ada Nebot}
@@ -60,13 +64,12 @@ This document describes how data providers can publish time series of tabular da
 
 \section{The Time Series Structure}
 \label{elem:TIMESERIES}
-This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters) and sometimes different types of data (e.~g. spectra, or images)
+This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters, positions, radial velocities) and sometimes even include different types of data (e.~g. spectra, or images). 
 
 We propose the following elements to describe the elements of the time series: 
 
 \subsection{\elem{TIMESYS} Element}
-\elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \elem{ref} attribute. The elements of TIMESYS are those reported in the specification of VOTable1.4 \ref{VOTable1.4}. This fields are the following: 
-
+\elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \elem{ref} attribute. A \elem{TIMESYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it.  The elements of TIMESYS, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
 \begin{description}
    \item[\elem{ID}] This attribute is used to reference \elem{TIMESYS} elements from the elements using the time system.
    \item[\elem{timeorigin}] This is the time origin of the time coordinate, given as a Julian Date for the the time scale and reference point
@@ -76,8 +79,19 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
    \item[\elem{refposition}] The reference position again is a simple string, the values of which SHOULD be taken from the IVOA \emph{refposition} vocabulary (\url{http://www.ivoa.net/rdf/refposition}). This attribute is mandatory.
 \end{description}
 
+\subsection{\elem{COOSYS} Element}
+\elem{COOSYS} element defines a celestial coordinate system, to which the components of a position on the celestial sphere refer.
+To reference the time system defined by a \elem{COOSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{COOSYS} using the VOTable \elem{ref} attribute. A \elem{COOSYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it. The elements of \elem{COOSYS}, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
+\begin{description}
+     \item[\elem{ID}] This attribute is used to reference the \elem{COOSYS} elements from the elements using the coordinate system. This attribute is mandatory.
+     \item[\elem{system}] This attribute specifies the coordinate system among \verb|"BCRS"|, \verb|"ICRS"|, \verb|"eq_FK5"|, \verb|"eq_FK4"|, \verb|"ecl_FK4"|, \verb|"ecl_FK5"|, \verb|"galactic"|, \verb|"supergalactic"|. 
+     \item[\elem{equinox}] This attribute fixes the equatorial or ecliptic systems (e.g., \verb|"J2000"| as the default for \verb|"eq_FK5"| or \verb|"B1950"| as the default for \verb|"eq_FK4"|).
+     \item[\elem{epoch}] This attribute specifies the epoch of the positions when necessary.\todo{epoch should be able to vary...}
+\end{description}
+
+
 \subsection{\elem{FILTERSYS} Element}
-\elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. 
+\elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. A \elem{FILTERSYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it. The attributes of \elem{FILTERSYS} are the following: 
 \begin{description}
      \item[\elem{ID}] This attribute is used to reference the \elem{FILTERSYS} elements from the elements using the photometric system. This attribute is mandatory. 
      \item[\elem{uniqueIdentifier}] This is the field to uniquely identify the zero point assigned to a filter and to a specific photometric system. We recommend the syntax: Facility/Subcategory/Band/Photometric System Type[/Suffix]\todo{I am not sure about that suffix, I just copied from the PhotDM, but this needs to be checked, please Jesus, can you have a look at that? } (e.g. SDSS/SDSS.G/G/AB, GAIA/GAIA.G/G/AB, Palomar/ZTF.r/AB). 
@@ -88,8 +102,9 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
 \end{description}
 \todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile. But I think this are the minimal requirements.}
 
+
 \subsection{\elem{GROUP}}
-\elem{GROUP} contains the time series data itself. A service providing time series \textbf{must} provide this element. 
+\elem{GROUP} contains the time series data itself. A service providing time series \textbf{MUST} provide this element. 
 Each \elem{GROUP} contains:
 \begin{description}
      \item[\elem{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
@@ -105,20 +120,23 @@ The data provider is responsible for providing accurate metadata for the element
 
 
 \section{The Time Series Data Model Summary}
-
+The different components of the Time Series model are summarized in Table~\ref{table:tsmodel}. Each of these components is an independent part and as such, metadata is only required to be described and included in the VOTable if applicable. 
 \begin{landscape}
 \begin{table}
 \begin{center}
 \begin{tabular}{|p{0.5\textheight}|p{0.2\textheight}|p{0.4\textheight}|p{0.2\textheight}|p{0.1\textheight}|p{0.15\textheight}|}
 %\sptablerule
 \hline
-\textbf{Utype }  & \textbf{UCD1+} & \textbf{Meaning} & \textbf{Default value} & \textbf{Data type} & \textbf{Required}\\
+\celcol{Utype }  & \celcol{UCD1+} & \celcol{Meaning} & \celcol{Default value} & \celcol{Data type} & \celcol{Required}\\
 \sptablerule
+\multicolumn{6}{c}{\celcol{Time axis (TIMESYS)}}\\
 ts:TimeSys.timescale   &                & Time scale                                               & & string & must \\
 \hline
 ts:TimeSys.refposition &                & Time reference position                                  & & string & must \\
 \hline
 ts:TimeSys.origin      &                & Time origin of the time series given as a Julian Date    & & double & must \\
+\hline
+\multicolumn{6}{c}{\celcol{Case 1: photometric axis (FILTERSYS)}} \\
 \hline
 ts:PhotCal.identifier  & meta.ref.ivorn & Unique identifier of the Photometry Calibration instance & & string & should \\
 \hline
@@ -126,10 +144,13 @@ ts:PhotCal.zeroPoint.flux.value & phot.flux.density & flux value at Zero point a
 \hline 
 ts:PhotCal.magnitudeSystem.type & meta.code & Type of magnitude system & VEGAMag & string & should \\
 \hline 
-ts:MeanRefMag &  & Mean magnitude used for differential magnitude calculation in this filter &  & double & should \\
+ts:MeanRefMag                   &  & Mean magnitude used for differential magnitude calculation in this filter &  & double & should \\
+\hline
+\multicolumn{6}{c}{\celcol{Case 2: position (COOSYS) }} \\
+\multicolumn{6}{c}{\celcol{Case 3: radial velocity axis }} \\
 \label{table:tsmodel}
 \end{tabular}
-\caption{}
+\caption{Model components and associated UTYPES, UCD1+ of the Time Series Annotation}
 \end{center}
 \end{table}
 \end{landscape}
