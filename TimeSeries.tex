@@ -3,6 +3,7 @@
 
 \usepackage{todonotes}
 \usepackage{enumitem}
+\usepackage{pdflscape}
 
 \usepackage{listings}
 \lstloadlanguages{XML,sh}
@@ -74,7 +75,7 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
    \item[\elem{timescale}] This is the time scale used. Values \textbf{SHOULD} be taken from the IVOA \emph{timescale} vocabulary (\url{http://www.ivoa.net/rdf/timescale}). This attribute is mandatory.
    \item[\elem{refposition}] The reference position again is a simple string, the values of which SHOULD be taken from the IVOA \emph{refposition} vocabulary (\url{http://www.ivoa.net/rdf/refposition}). This attribute is mandatory.
 \end{description}
-  
+
 \subsection{\elem{FILTERSYS} Element}
 \elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. 
 \begin{description}
@@ -83,10 +84,9 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
      \item[\elem{zeroPointFlux}] Photometric zero point associated to this instance. 
      \item[\elem{magnitudeSystem}] Magnitude system associated to this instance.
      \item[\elem{effectiveWavelength}] Effective wavelength of the filter in this instance. \todo{It could have been the mean wavelength too. This might need some discussion}
-     \item[\elem{meanReference}] Mean value of the magnitude (or flux) of the reference used for calculating diffential photometry in the specified photometric system. This attribute is optional. \todo{Added this to be able to compare differential magnitudes, but this needs discussion. I'm not sure data providers would provide that, but for now I leave it.} 
+     \item[\elem{meanRefMag}] Mean value of the magnitude (or flux) of the reference used for calculating diffential photometry in the specified photometric system. This attribute is optional. \todo{Added this to be able to compare differential magnitudes, but this needs discussion. I'm not sure data providers would provide that, but for now I leave it.} 
 \end{description}
 \todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile. But I think this are the minimal requirements.}
-
 
 \subsection{\elem{GROUP}}
 \elem{GROUP} contains the time series data itself. A service providing time series \textbf{must} provide this element. 
@@ -98,8 +98,42 @@ Each \elem{GROUP} contains:
      \item One SELECT element (when needed). This element provides a way to reference rows instead of columns. 
 \end{description}
 
+The data provider is responsible for providing accurate metadata for the elements \elem{TIMESYS} and \elem{FILTERSYS}. \todo{Do we have to say something about claiming a new capability in the registry?}
+
 %\section{Architecture}
 %We consider the general case of a service returning time series in the form of tabular data.
+
+
+\section{The Time Series Data Model Summary}
+
+\begin{landscape}
+\begin{table}
+\begin{center}
+\begin{tabular}{|p{0.5\textheight}|p{0.2\textheight}|p{0.4\textheight}|p{0.2\textheight}|p{0.1\textheight}|p{0.15\textheight}|}
+%\sptablerule
+\hline
+\textbf{Utype }  & \textbf{UCD1+} & \textbf{Meaning} & \textbf{Default value} & \textbf{Data type} & \textbf{Required}\\
+\sptablerule
+ts:TimeSys.timescale   &                & Time scale                                               & & string & must \\
+\hline
+ts:TimeSys.refposition &                & Time reference position                                  & & string & must \\
+\hline
+ts:TimeSys.origin      &                & Time origin of the time series given as a Julian Date    & & double & must \\
+\hline
+ts:PhotCal.identifier  & meta.ref.ivorn & Unique identifier of the Photometry Calibration instance & & string & should \\
+\hline
+ts:PhotCal.zeroPoint.flux.value & phot.flux.density & flux value at Zero point associated to this filter & & double & should \\ 
+\hline 
+ts:PhotCal.magnitudeSystem.type & meta.code & Type of magnitude system & VEGAMag & string & should \\
+\hline 
+ts:MeanRefMag &  & Mean magnitude used for differential magnitude calculation in this filter &  & double & should \\
+\label{table:tsmodel}
+\end{tabular}
+\caption{}
+\end{center}
+\end{table}
+\end{landscape}
+
 
 \bibliography{ivoatex/ivoabib,ivoatex/docrepo,TimeSeries}
 
