@@ -11,12 +11,12 @@ showstringspaces=False}
 
 \usepackage{multirow}
 
-\definecolor{DarkRed}{rgb}{0.5,0,0}
+\definecolor{LightBlue}{rgb}{0.0,0.318,0.612}
 
 % Added this comand for my text to be added in blue and boldface
 
 \newcommand\ada[1]{\textcolor{blue}{\textbf{#1}}}
-\newcommand\elem[1]{\textcolor{DarkRed}{{\tt#1}}}
+\newcommand\elem[1]{\textcolor{LightBlue}{{\tt#1}}}
 %\def\attrval#1#2{{\tt{\fg{DarkRed}#1}="{\fg{DarkPurple}#2}"}}
 %\def\elem#1{{\tt{\fg{DarkRed}#1}}}
 
@@ -33,7 +33,7 @@ showstringspaces=False}
 \section*{Acknowledgments}
 Should we acknowledge previous work from M. Graham and others
 
-ASTERICS
+%ASTERICS
 
 ESCAPE
 
@@ -53,10 +53,7 @@ infrastructure that enable VO applications.
 
 
 \section{Introduction}
-This document describes how data providers can publish time series of tabular data to the Virtual Observatory.
-This document does not describe how data providers store or manipulate the data, it only concerns how the data are exposed to the world using well-defined metadata. 
-This document assumes that the data provider already destributes time series as a single table, this table can contain several columns.
-This document does not limit the number of columns the time series can contain to those explecitely mentioned here. It only suggest metadata to the most common columns in time series.  
+This document describes how data providers can publish time series of tabular data to the Virtual Observatory. This document does not describe how data providers store or manipulate the data, it only concerns how the data are exposed to the world using well-defined metadata. This document assumes that the data provider already destributes time series as a single table, this table can contain several columns. This document does not limit the number of columns the time series can contain to those explecitely mentioned here. It only suggest metadata to the most common columns in time series.  
 
 % Notes don't need the architecture diagram
 
@@ -67,7 +64,7 @@ This document proposes the minimum metadata in VOTables to describe time series.
 We propose the following elements to describe the elements of the time series: 
 
 \subsection{\elem{TIMESYS} Element}
-\elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \elem{ref} attribute. The elements of TIMESYS are those reported in the specification of VOTable1.4 \ref{XX}. This fields are the following: 
+\elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \elem{ref} attribute. The elements of TIMESYS are those reported in the specification of VOTable1.4 \ref{VOTable1.4}. This fields are the following: 
 
 \begin{description}
    \item[\elem{ID}] This attribute is used to reference \elem{TIMESYS} elements from the elements using the time system.
@@ -79,16 +76,17 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
 \end{description}
   
 \subsection{\elem{FILTERSYS} Element}
-\elem{FILTERSYS} contains information on the photometric system of the observations. Elements introduced here are inherited from the Photometry Data Model \cite{XX}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. 
+\elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. 
 \begin{description}
-     \item[\elem{ID}] This attribute is used to reference the \elem{FILTERSYS} elements from the elements using the photometric system. This attribute is mandatory.
-     \item[\elem{uniqueIdentifier}] This is the field to uniquely identify the zero point assigned to a filter and to a specific photometric system. We recommend the syntax: Facility/Subcategory/Band/Photometric System Type[/Suffix]\todo{I am not sure about that suffix, I just copied from the PhotDM, but this needs to be checked, please Jesus, can you have a look at that? } (e.g. SDSS/SDSS.G/G/AB, GAIA/GAIA.G/G/AB). 
+     \item[\elem{ID}] This attribute is used to reference the \elem{FILTERSYS} elements from the elements using the photometric system. This attribute is mandatory. 
+     \item[\elem{uniqueIdentifier}] This is the field to uniquely identify the zero point assigned to a filter and to a specific photometric system. We recommend the syntax: Facility/Subcategory/Band/Photometric System Type[/Suffix]\todo{I am not sure about that suffix, I just copied from the PhotDM, but this needs to be checked, please Jesus, can you have a look at that? } (e.g. SDSS/SDSS.G/G/AB, GAIA/GAIA.G/G/AB, Palomar/ZTF.r/AB). 
      \item[\elem{zeroPointFlux}] Photometric zero point associated to this instance. 
      \item[\elem{magnitudeSystem}] Magnitude system associated to this instance.
-     \item[\elem{effectiveWavelength}] Effective wavelength of the filter in this instance. \todo{It could have been the mean wavelength too.}
+     \item[\elem{effectiveWavelength}] Effective wavelength of the filter in this instance. \todo{It could have been the mean wavelength too. This might need some discussion}
+     \item[\elem{meanReference}] Mean value of the magnitude (or flux) of the reference used for calculating diffential photometry in the specified photometric system. This attribute is optional. \todo{Added this to be able to compare differential magnitudes, but this needs discussion. I'm not sure data providers would provide that, but for now I leave it.} 
 \end{description}
+\todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile. But I think this are the minimal requirements.}
 
-\todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile.}
 
 \subsection{\elem{GROUP}}
 \elem{GROUP} contains the time series data itself. A service providing time series \textbf{must} provide this element. 
