@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{ivoa}
+\input tthdefs
+
+\usepackage{todonotes}
+\usepackage{enumitem}
+
+\usepackage{listings}
+\lstloadlanguages{XML,sh}
+\lstset{flexiblecolumns=true,tagstyle=\ttfamily,
+showstringspaces=False}
+
+\usepackage{multirow}
+
+% Added this comand for my text to be added in blue and boldface
+% Please for new text choose another color 
+\newcommand\ada[1]{\textcolor{blue}{\textbf{#1}}}
+
+\title{Simple Cone Search}
+\ivoagroup{Data Model}
+\author[http://www.ivoa.net/twiki/bin/view/IVOA/AdaNebot]{Ada Nebot}
+\editor{Ada Nebot}
+
+\begin{document}
+\begin{abstract}
+  This document describes a proposal to annotate in a VOTable time series data. It is limitted to the most common type of time series, i.e. tabular data containing a parameter measured as a function of time. The annotation reuses elements of exisiting Data Models when possible and defines a set of new elements. This document can be taken as a test case of the more general purpose model CADM. 
+\end{abstract}
+
+\section*{Acknowledgments}
+Should we acknowledge previous work from M. Graham,
+
+ASTERICS
+
+ESCAPE
+
+\section*{Conformance-related definitions}
+
+The words ``MUST'', ``SHALL'', ``SHOULD'', ``MAY'', ``RECOMMENDED'', and
+``OPTIONAL'' (in upper or lower case) used in this document are to be
+interpreted as described in IETF standard RFC2119 \citep{std:RFC2119}.
+
+The \emph{Virtual Observatory (VO)} is a
+general term for a collection of federated resources that can be used
+to conduct astronomical research, education, and outreach.
+The \href{http://www.ivoa.net}{International
+Virtual Observatory Alliance (IVOA)} is a global
+collaboration of separately funded projects to develop standards and
+infrastructure that enable VO applications.
+
+
+\section{Introduction}
+This document describes how data providers can publish time series of tabular data to the Virtual Observatory.
+This document does not describe how data providers store or manipulate the data, it only concerns how the data are exposed to the world using well-defined metadata. 
+This document assumes that the data provider already destributes time series as a single table, this table can contain several columns.
+This document does not limit the number of columns the time series can contain to those explecitely mentioned here. It only suggest metadata to the most common columns in time series.  
+
+% Notes don't need the architecture diagram
+
+
+\bibliography{ivoatex/ivoabib,ivoatex/docrepo,TimeSeries}
+
+
+\end{document}
