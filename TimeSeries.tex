@@ -26,7 +26,7 @@ showstringspaces=False}
 \end{abstract}
 
 \section*{Acknowledgments}
-Should we acknowledge previous work from M. Graham,
+Should we acknowledge previous work from M. Graham and others
 
 ASTERICS
 
@@ -55,6 +55,27 @@ This document does not limit the number of columns the time series can contain t
 
 % Notes don't need the architecture diagram
 
+\section{The Time Series}
+This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters) and sometimes different types of data (e.~g. spectra, or images)
+
+We propose the following elements to describe the elements of the time series: 
+
+\subsection{TIME}
+\textbf{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{must} provide this element. 
+
+\subsection{BAND}
+\textbf{BAND} contains information on the filter of the observations. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{may} provide this element.
+
+\subsection{GROUP}
+\textbf{GROUP} contains the time series data itself. Each GROUP will contain:
+\begin{itemize}
+     \item A DESCRIPTION element
+     \item One or several FIELDref
+     \item One or several PARAM or PARAMref
+\end{itemize}
+
+%\section{Architecture}
+%We consider the general case of a service returning time series in the form of tabular data.
 
 \bibliography{ivoatex/ivoabib,ivoatex/docrepo,TimeSeries}
 
