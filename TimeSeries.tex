@@ -5,7 +5,8 @@
 \usepackage{enumitem}
 \usepackage{pdflscape}
 \usepackage{xcolor,colortbl}
-
+\usepackage[most]{tcolorbox}
+ 
 \usepackage{listings}
 \lstloadlanguages{XML,sh}
 \lstset{flexiblecolumns=true,tagstyle=\ttfamily,
@@ -71,7 +72,7 @@ This document describes how data providers can publish time series of tabular da
 \label{elem:TIMESERIES}
 This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters, positions, radial velocities) and sometimes even include different types of data (e.~g. spectra, or images). 
 
-We propose the following elements to describe the elements of the time series: 
+We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \cite{VOTable1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We include in this document the definition of \elem{TIMESYS} and \elem{COOSYS} as described in VOTable and based on those, we define the new elements \elem{FILTERSYS} and \elem{VELSYS} following the same type of structure. If these elements were to be changed in future versions of VOTable it should be straight forward to update this document. 
 
 \subsection{\elem{TIMESYS} Element}
 \elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \elem{ref} attribute. A \elem{TIMESYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it.  The elements of TIMESYS, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
@@ -84,6 +85,16 @@ for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeo
    \item[\elem{refposition}] The reference position again is a simple string, the values of which SHOULD be taken from the IVOA \emph{refposition} vocabulary (\url{http://www.ivoa.net/rdf/refposition}). This attribute is mandatory.
 \end{description}
 
+\noindent
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<TIMESYS ID="time_frame" refposition="BARYCENTER" timeorigin="2455197.5"
+         timescale="TCB"/>
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
+
 \subsection{\elem{COOSYS} Element}
 \elem{COOSYS} element defines a celestial coordinate system, to which the components of a position on the celestial sphere refer.
 To reference the time system defined by a \elem{COOSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{COOSYS} using the VOTable \elem{ref} attribute. A \elem{COOSYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it. The elements of \elem{COOSYS}, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
@@ -94,31 +105,86 @@ To reference the time system defined by a \elem{COOSYS} element, \elem{FIELD}s (
      \item[\elem{epoch}] This attribute specifies the epoch of the positions when necessary.\todo{epoch should be able to vary...}
 \end{description}
 
+\noindent
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<COOSYS ID="system" epoch="J2015.5" system="ICRS"/>
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
 
 \subsection{\elem{FILTERSYS} Element}
 \elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \elem{ref} attribute. A \elem{FILTERSYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it. The attributes of \elem{FILTERSYS} are the following: 
 \begin{description}
      \item[\elem{ID}] This attribute is used to reference the \elem{FILTERSYS} elements from the elements using the photometric system. This attribute is mandatory. 
-     \item[\elem{uniqueIdentifier}] This is the field to uniquely identify the zero point assigned to a filter and to a specific photometric system. We recommend the syntax: Facility/Subcategory/Band/Photometric System Type[/Suffix]\todo{I am not sure about that suffix, I just copied from the PhotDM, but this needs to be checked, please Jesus, can you have a look at that? } (e.g. SDSS/SDSS.G/G/AB, GAIA/GAIA.G/G/AB, Palomar/ZTF.r/AB). 
-     \item[\elem{zeroPointFlux}] Photometric zero point associated to this instance. 
+     \item[\elem{uniqueIdentifier}] This is the field to uniquely identify the zero point assigned to a filter and to a specific photometric system. We recommend the syntax: Facility/Subcategory/Band/Photometric System Type[/Suffix]\todo{I am not sure about that suffix, I just copied from the PhotDM, but this needs to be checked, please Jesus, can you have a look at that? } (e.g. GAIA/GAIA.G/G/AB, Palomar/ZTF.r/AB). 
+     \item[\elem{zeroPointFlux}] Photometric zero point associated to this instance in units of Jy. 
      \item[\elem{magnitudeSystem}] Magnitude system associated to this instance.
-     \item[\elem{effectiveWavelength}] Effective wavelength of the filter in this instance. \todo{It could have been the mean wavelength too. This might need some discussion}
-     \item[\elem{meanRefMag}] Mean value of the magnitude (or flux) of the reference used for calculating diffential photometry in the specified photometric system. This attribute is optional. \todo{Added this to be able to compare differential magnitudes, but this needs discussion. I'm not sure data providers would provide that, but for now I leave it.} 
+     \item[\elem{effectiveWavelength}] Effective wavelength of the filter in this instance in Angstrom. \todo{It could have been the mean. This might need some discussion}
+%     \item[\elem{meanRefMag}] Mean value of the magnitude (or flux) of the reference used for calculating diffential photometry in the specified photometric system. This attribute is optional. \todo{Added this to be able to compare differential magnitudes, but this needs discussion. OK, after giving it a thought, although that would be great it's not going to be possible, it would be making data providers give the o-c which they are not giving. Do I drop it but for now I leave the commented text.} 
 \end{description}
-\todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile. But I think this are the minimal requirements.}
 
+\noindent
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<FILTERSYS ID="phot_sys" uniqueIdentifier="Palomar/ZTF.g/Vega" 
+           zeroPointFlux="3963.97" magnitudeSystem="Vega" 
+           effectiveWavelength="4722.74" />
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
+
+\todo{Jesus: I would like to somehow encourage data providers to give their full info for services such as the SVO profile. But I think this are the minimal requirements.}
+\subsection{\elem{VELSYS} Element}
+\elem{VELSYS} contains information on the velocity system of the observations. A service providing time series of the type radial-velocity-curve \textbf{MUST} provide this element. To reference the velocity system defined by a \elem{VELSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{VELSYS} using the VOTable \elem{ref} attribute. A \elem{VELSYS} element referenced via a \elem{ref} attribute \textbf{SHOULD} appear before the element that references it. The attributes of \elem{VELSYS} are the following: 
+
+\begin{description}
+     \item[\elem{ID}] This attribute is used to reference the \elem{FILTERSYS} elements from the elements using the photometric system. This attribute is mandatory. 
+     \item[\elem{velocity}] This attribute defines the type of value. Allowed values are \verb|VELOCITY| and \verb|REDSHIFT|
+     \item[\elem{definition}] This attribute allows to translate redshift to doppler Velocity \cite{STC}. Allowed values are \verb|OPTICAL|, \verb|RADIO| and \verb|RELATIVISTIC|. \todo{check FITS}
+     \item[\elem{refPosition}] This attribute is the reference position. The values SHOULD be taken from the IVOA \emph{refposition} vocabulary (\url{http://www.ivoa.net/rdf/refposition}). The other possible values are \verb|LSR|, \verb|LSRD|, \verb|GALACTOCENTRIC| \verb|LOCAL_GROUP_CENTER|. This attribute is mandatory.
+\end{description}
+
+\noindent
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<VELSYS ID="velocity_sys" velocity="VELOCITY" 
+           definition="OPTICAL" refPOSITION="LSR" />
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
+
+Spatial velocity and redshift are different elements
+
+\subsection{\elem{ORBITSYS} Element}
+Not sure we should do this... but perhaps
+%Semi major axis, Eccentricity, Inclination, Longitude of ascending node, Argument of periapsis, Epoch T of mean anomaly M (if present) or periapsis (if M is not present)
+%The following parameters may be provided: Mean anomaly M: 0 ≤ M < 360˚; if M is present, T will be considered to
+%represent the epoch of M Orbital period P taken from page 26 / 109 from STC https://arxiv.org/pdf/1110.0504.pdf
 
 \subsection{\elem{GROUP}}
-\elem{GROUP} contains the time series data itself. A service providing time series \textbf{MUST} provide this element. 
-Each \elem{GROUP} contains:
+\elem{GROUP} contains the time series data itself. A service providing time series \textbf{MUST} provide this element.
+
+The \elem{GROUP} is identified with:
 \begin{description}
-     \item[\elem{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
-     \item[\elem{FIELDref}] One or several FIELDref to reference to the \elem{TIMESYS} element and the \elem{FILTERSYS} when applicable. 
-     \item One or several PARAM or PARAMref. This will describe the BAND for instance. While PARAM is usually defining valid for a whole table in this case it will be valid only for the GROUP.  
-     \item One SELECT element (when needed). This element provides a way to reference rows instead of columns. 
+\item ucd=''timeseries'' \todo{Please give input here}
+\item utype =''timeseries'' \todo{Please give input here}
 \end{description}
 
-The data provider is responsible for providing accurate metadata for the elements \elem{TIMESYS} and \elem{FILTERSYS}. \todo{Do we have to say something about claiming a new capability in the registry?}
+The \elem{GROUP} contains:
+\begin{description}
+     \item[\elem{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
+     \item[\elem{FIELDref}] One or several \elem{FIELDref} (or \elem{PARAMref}) to reference to the \elem{TIMESYS} element. At least one such reference MUST be provided.
+     \item[\elem{FIELDref}] One or several \elem{FIELDref} (or \elem{PARAMref}) to reference to the \elem{COOSYS}, \elem{FILTERSYS} as applicable. 
+     \item One or several PARAM or PARAMref. This will describe the BAND for instance. While PARAM is usually defining valid for a whole table in this case it will be valid only for the GROUP.  
+     \item One SELECT element (when needed). This element provides a way to reference rows instead of columns. This attribute is particular important for cases in which the magnitudes given in a column are not corresponding to the same band and the name of the band is given in a different column. \todo{I hope this is clear, case of ZTF for instance.}
+\end{description}
+
+The data provider is responsible for providing accurate metadata for the elements here described.
+\todo{Do we have to say something about claiming a new capability in the registry?}
 
 %\section{Architecture}
 %We consider the general case of a service returning time series in the form of tabular data.
