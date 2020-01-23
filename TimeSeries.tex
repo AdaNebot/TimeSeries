@@ -63,7 +63,7 @@ showstringspaces=False}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/AdaNebot]{Ada Nebot}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/FrancoisBonnarel]{Francois Bonnarel}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/MireilleLouys]{Mireille Louys}
-\author[http://www.ivoa.net/twiki/bin/view/IVOA/LaurantMichel]{Laurant Michel}
+\author[http://www.ivoa.net/twiki/bin/view/IVOA/LaurentMichel]{Laurent Michel}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/DaveMorris]{Dave Morris}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/JesusSalgado]{Jesus Salgado}
 \editor{Ada Nebot}
@@ -149,11 +149,10 @@ To reference the time system defined by a \elem{COOSYS} element, \elem{FIELD}s (
 \subsection{\elem{FILTERSYS} Element}
 \elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \attr{ref} attribute. A \elem{FILTERSYS} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
 
-
 Each \elem{FILTERSYS} is defined as a \elem{GROUP} with the following mandatory terms:
 \begin{description}
      \item[\attrval{name}{FILTERSYS}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|FILTERSYS|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable \cite[][see Section 3.2], and in this context it will help clients interpret the contents of the \elem{GROUP}. 
-     \item[\attr{ID}] This attribute is used to reference the \elem{FILTERSYS} \elem{GROUP} from the elements using the photometric system. This attribute is mandatory.
+     \item[\attr{ID}] This attribute is used to reference the \elem{FILTERSYS} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
      \item[\attr{DESCRIPTION}] This attribute is used to describe the \elem{FILTERSYS} \elem{GROUP}. This attribute is optional, but recommended.
      \item[\attrval{utype}{timeseries:PhotometryPoint}]
 \end{description}
@@ -201,50 +200,37 @@ The attributes of this \elem{GROUP} are defined as \elem{PARAM}s containing the 
 %\input{filtersys_FILTERSYS.tex}
 %Same as above using \elem{GROUP} and \elem{PARAM}s instead. While the above instance is more compact, and perhaps easier to interpret at the client side, the second allows for some flexibility on the data provider side.
  
-Proposed annotation example for a \elem{FILTERSYS} element:
+Proposed annotation example for a \elem{FILTERSYS} element: 
 \input{filtersys_PARAM.tex}
 
-While following the same approach as for \elem{COOSYS} and \elem{TIMESYS} would result in a more compact annotation, we decide to define this element as a \elem{GROUP} to allow for some flexibility on the data provider side. We are aware that this implies clients to work around more complex annotations. We hope to alleviate that by following the exact \attr{name} convention here proposed. 
+While following the same approach as for \elem{COOSYS} and \elem{TIMESYS} would result in a more compact annotation, we decide to define this element as a \elem{GROUP} to allow for some flexibility on the data provider side. We are aware that this implies clients to work around more complex annotations. We hope to alleviate that by following the exact \attr{name} and \attr{utype} convention as proposed in this document. 
 
 %\input{VELSYS}
 
-For other type of data not explecitely defined in this we reccomend to use the appropriate UCD1+ in agreement with \url{http://www.ivoa.net/documents/UCD1+/index.html}. 
+For other type of time series data not explecitely defined in this document we reccomend to use the appropriate UCD1+ in agreement with \url{http://www.ivoa.net/documents/UCD1+/index.html}. The data provider is responsible for providing accurate metadata for the elements here described.
+
 
 %\input{GROUP.tex}
-\subsection{\elem{TABLE}}
-\elem{TABLE} contains the time series data itself. A service providing time series \textbf{MUST} provide this element and identify it with:
-The \elem{TABLE} is identified with:
+\subsection{\elem{TABLE}}\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
+We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{FILTERSYS} \elem{GROUP} element defined. 
+The \elem{TABLE} must include:
 \begin{description}
-\item[\attrval{ucd}{timeseries}]
-\item[\attrval{utype}{timeseries}]
+     \item[\attrval{name}{timeseries}] This attribute is mandatory and it should be set to \verb|timeseries|. 
+     \item[\attrval{utype}{timeseries}] This attribute is mandatory and it MUST be set to \verb|timeseries|. 
+     \item[\attr{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
+     \item[\attr{ref}] One or several \elem{ref} to reference to the \elem{TIMESYS} element. At least one such reference MUST be provided.
+     \item[\elem{ref}] One or several \elem{ref} to reference to the \elem{COOSYS} (when applicable). 
+     \item[\elem{ref}] One or several \elem{ref} to reference to each \elem{FILTERSYS} defined (when applicable). 
 \end{description}
 
-The \elem{GROUP} contains:
-\begin{description}
-     \item[\elem{name}] The name of the group. This attribute is mandatory and it should be set to \verb|timeseries|. 
-     \item[\elem{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
-     \item[\elem{FIELDref}] One or several \elem{FIELDref} (or \elem{PARAMref}) to reference to the \elem{TIMESYS} element. At least one such reference MUST be provided.
-     \item[\elem{FIELDref}] One or several \elem{FIELDref} (or \elem{PARAMref}) to reference to the \elem{COOSYS}, \elem{FILTERSYS} as applicable. 
-     \item One or several PARAM or PARAMref. This will describe the BAND for instance. While PARAM is usually defining valid for a whole table in this case it will be valid only for the GROUP.  
-     \item[\elem{SELECT}] One SELECT attribute. This element provides a way to reference rows instead of columns. This attribute is particular important for cases in which the magnitudes given in a column are not corresponding to the same band and the name of the band is given in a different column. \todo{I hope this is clear, case of ZTF for instance.}
-\end{description}
+Let us consider the simplest time series case possible: a table containing only three columns \emph{time, magnitude and magnitude error}, the minimum VOTable would look like this:
+\input{vot-ex1-GROUP.tex}
 
-Let us consider the simplest time series case possible: a table containing only three columns \emph{time, magnitude and magnitude error}, the minimum GROUP would be:
+Let us consider now consider a more complicated case, in which the time series includes a column with name of the photometric filter of each row of the time series, i.~e. a table containing four columns \emph{time, magnitude and magnitude error, filter name}. In those cases this complicates the annotation and the need of being able to reference rows (as well as columns) becomes an issue. It is to overcome such problem, that we propose to use different \elem{TABLE} elements for different types of products. We propose therefore to annotate a VOTable as shown in the following example: 
 
 \begingroup
-\input{vot-ex1.tex}
-\endgroup
-
-In this example we have assumened some metadata for \elem{TIMESYS} and \elem{FILTERSYS} and have included to show a full example case. While for the time and the magnitude reference implies an earlier definition of the elements \elem{TIMESYS} and \elem{FILTERSYS} this is not the case for the error. The error in the magnitude references the name of the column which will be repeated in the \elem{FIELD} element directly of the \elem{TABLE}.
-
-We could argue that the \elem{GROUP} is not needed in this case, but the idea is to have a common way to representing time series, including the more complicated cases. 
-
-\newpage 
-Let us consider now consider a more complicated case, in which the time series also includes a column to state the name of the filter for wich the magnitudes are given, i.~e. a table containing four columns \emph{time, magnitude and magnitude error, filter name}. In those cases this complicates the annotation and the need of being able to reference rows (as well as columns) becomes clear.
-
-\begingroup
-\input{vot-ex2.tex}
-\endgroup
+\input{vot-ex2-GROUP.tex}
+\endgroup    
 
 To avoid referencing columns, which would make things a bit more complicated, we propose to create different \elem{TABLE} elements, one for each filter. This, although reduntant in the definition of some of the columns, will ease combining timeseries from the client side. 
 
@@ -253,93 +239,11 @@ To avoid referencing columns, which would make things a bit more complicated, we
 
 
 
-The data provider is responsible for providing accurate metadata for the elements here described.
 \todo{Do we have to say something about claiming a new capability in the registry? I would say so.}
 
-\section{Serialization examples}
-\subsection{Lightcurve distributed by ZTF}
+\todo{Do we want to add summary table with utype, UCD1+, Meaning, Default value, Data type, required?}
 
-The following serialization is an example of a response of the ZTF time series service and how it could be enhanced, making use of the Time Series model through utypes:
-% \footnote{\url{\verb|https://irsa.ipac.caltech.edu/docs/program_interface/ztf_lightcurve_api.html|}}
-% in particular this was the query \url{\verb|https://irsa.ipac.caltech.edu/cgi-bin/ZTF/nph_light_curves?POS=CIRCLE%20298.0025%2029.87147%200.0014&BANDNAME=g,r,i|}}
-\begin{verbatim}
-<?xml version="1.0" encoding="utf-8"?>
-<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.4" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <RESOURCE>
-   <TIMESYS ID="time" refposition="BARYCENTER" timeorigin="" timescale="TCB"/>
-   <TIMESYS ID="htime" refposition="HELIOCENTER" timeorigin="" timescale="TCB"/>
-   <COOSYS ID="ICRS" system="ICRS"  epoch="J2015"/>
-   <FILTERSYS ID="ztf_g" uniqueIdentifier="Palomar/ZTF.g/Vega" 
-           zeroPointFlux="3964.0" magnitudeSystem="Vega" 
-           effectiveWavelength="4722.7" />
-   <FILTERSYS ID="ztf_r" uniqueIdentifier="Palomar/ZTF.r/Vega" 
-           zeroPointFlux="3042.0" magnitudeSystem="Vega" 
-           effectiveWavelength="6339.6" />
-   <FILTERSYS ID="ztf_i" uniqueIdentifier="Palomar/ZTF.i/Vega" 
-           zeroPointFlux="2426.1" magnitudeSystem="Vega" 
-           effectiveWavelength="7886.1" />
-
-<GROUP utype="timeseries" >
-   <FIELDref
-</GROUP>
-   <TABLE>
-      <FIELD ID="oid" name="oid" datatype="long" ucd="meta.id" utype="Source.identifier" >...</FIELD>
-      <FIELD name="hjd" datatype="double" ucd="time.epoch" unit="d">...</FIELD>
-      <FIELD name="mjd" datatype="double" ucd="time.epoch;obs.exposure" unit="d">...</FIELD>
-      ...
-      <DATA>
-        <TABLEDATA>
-          ...
-          ...
-          ...
-        </TABLEDATA>
-      </DATA>
-    </TABLE>
-  </RESOURCE>
-</VOTABLE>
-\end{verbatim}
-
-%\section{Architecture}
-%We consider the general case of a service returning time series in the form of tabular data.
-
-
-\section{The Time Series Data Model Summary}
-The different components of the Time Series model are summarized in Table~\ref{table:tsmodel}. Each of these components is an independent part and metadata associated to each specific case case should be included in the VOTable when applicable. 
-\begin{landscape}
-\begin{table}
-\begin{center}
-\begin{tabular}{|p{0.5\textheight}|p{0.2\textheight}|p{0.4\textheight}|p{0.2\textheight}|p{0.1\textheight}|p{0.15\textheight}|}
-%\sptablerule
-\hline
-\celcol{Utype }  & \celcol{UCD1+} & \celcol{Meaning} & \celcol{Default value} & \celcol{Data type} & \celcol{Required}\\
-\sptablerule
-\multicolumn{6}{c}{\celcol{Time axis (TIMESYS)}}\\
-ts:TimeSys.timescale   &                & Time scale                                               & & string & must \\
-\hline
-ts:TimeSys.refposition &                & Time reference position                                  & & string & must \\
-\hline
-ts:TimeSys.origin      &                & Time origin of the time series given as a Julian Date    & & double & must \\
-\hline
-\multicolumn{6}{c}{\celcol{Case 1: photometric axis (FILTERSYS)}} \\
-\hline
-ts:PhotCal.identifier  & meta.ref.ivorn & Unique identifier of the Photometry Calibration instance & & string & should \\
-\hline
-ts:PhotCal.zeroPoint.flux.value & phot.flux.density & flux value at Zero point associated to this filter & & double & should \\ 
-\hline 
-ts:PhotCal.magnitudeSystem.type & meta.code & Type of magnitude system & VEGAMag & string & should \\
-\hline 
-ts:MeanRefMag                   &  & Mean magnitude used for differential magnitude calculation in this filter &  & double & should \\
-\hline
-\multicolumn{6}{c}{\celcol{Case 2: position (COOSYS) }} \\
-\multicolumn{6}{c}{\celcol{Case 3: radial velocity axis }} \\
-\label{table:tsmodel}
-\end{tabular}
-\caption{Model components and associated UTYPES, UCD1+ of the Time Series Annotation}
-\end{center}
-\end{table}
-\end{landscape}
-
+%\input{timeseriesDM.tex}
 
 \bibliography{ivoatex/ivoabib,ivoatex/docrepo,TimeSeries}
 
