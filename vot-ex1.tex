@@ -1,0 +1,33 @@
+\begin{verbatim}
+<TIMESYS ID="htime" refposition="HELIOCENTER" timeorigin="JD-origin" 
+           timescale="UNKOWN"/>
+<TIMESYS ID="ttime" refposition="TOPOCENTER" timeorigin="MJD-origin" 
+           timescale="UNKOWN"/>
+<FILTERSYS ID="phot_sys_zg" uniqueIdentifier="Palomar/ZTF.g/Vega" 
+           zeroPointFlux="3963.97" magnitudeSystem="Vega" 
+           effectiveWavelength="4722.74" />
+<FILTERSYS ID="phot_sys_zr" uniqueIdentifier="Palomar/ZTF.r/Vega" 
+           zeroPointFlux="3042.0" magnitudeSystem="Vega" 
+           effectiveWavelength="6339.6" />
+<FILTERSYS ID="phot_sys_zi" uniqueIdentifier="Palomar/ZTF.i/Vega" 
+           zeroPointFlux="2426.1" magnitudeSystem="Vega" 
+           effectiveWavelength="7886.1" />
+<GROUP name="timeseries_zg" utype="timeseries" > 
+  <DESCRIPTION> This is a light-curve in filter zg</DESCRIPTION>
+  <FIELDref ref="timesys"/>
+  <FIELDref ref="magnitude_error"/>
+  <FIELDref ref="filter_name"/>
+</GROUP>
+<GROUP name="timeseries_rg" utype="timeseries" > 
+  <DESCRIPTION> This is a light-curve in several filters</DESCRIPTION>
+  <FIELDref ref="timesys"/>
+  <FIELDref ref="magnitude_error"/>
+  <FIELDref ref="filter_name"/>
+</GROUP>
+<GROUP name="timeseries_ig" utype="timeseries" > 
+  <DESCRIPTION> This is a light-curve in several filters</DESCRIPTION>
+  <FIELDref ref="timesys"/>
+  <FIELDref ref="magnitude_error"/>
+  <FIELDref ref="filter_name"/>
+</GROUP>
+\end{verbatim}

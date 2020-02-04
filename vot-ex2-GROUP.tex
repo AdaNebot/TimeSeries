@@ -1,0 +1,125 @@
+\noindent
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<?xml version="1.0" 
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+<RESOURCE>
+<RESOURCE>
+<COOSYS ID="system" epoch="J2015.5" system="ICRS"/>
+<TIMESYS ID="time_frame" refposition="BARYCENTER" 
+         timeorigin="2455197.5" timescale="TCB"/>
+<GROUP name="filtersys" ID="phot_sys-G" ucd="phot" 
+       utype="timeseries:PhotometryPoint" /> 
+       <DESCRIPTION>GAIA G filter, DR2</DESCRIPTION>
+       <PARAM name="uniqueIdentifier" ucd="meta.id;instr.filter" 
+              utype="photDM:PhotometryFilter.identifier" 
+              datatype="char" unit="" value="GAIA/GAIA2.G"/>
+       <PARAM name="zeroPointFlux" ucd="phot.mag;arith.zp" 
+              utype="photDM:PhotCal.zeroPoint.flux.value" 
+              datatype="float" unit="Jy" value="3296.2"/>
+       <PARAM name="magnitudeSystem" ucd="meta.code" 
+              utype="photDM:PhotCal.magnitudeSystem.type" 
+              datatype="char" unit="" value="Vega"/>
+       <PARAM name="effectiveWavelength" ucd="em.wl.effective" 
+              utype="photDM:PhotometryFilter.spectralLocation.value" 
+              datatype="float" unit="Angstrom" value="6230.0"/>
+</GROUP>
+<GROUP name="filtersys" ID="phot_sys-Gbp" ucd="phot" 
+       utype="timeseries:PhotometryPoint" /> 
+       <DESCRIPTION>GAIA Gbp filter, DR2</DESCRIPTION>
+       <PARAM name="uniqueIdentifier" ucd="meta.id;instr.filter" 
+              utype="photDM:PhotometryFilter.identifier" 
+              datatype="char" unit="" value="GAIA/GAIA2.Gbp"/>
+       <PARAM name="zeroPointFlux" ucd="phot.mag;arith.zp" 
+              utype="photDM:PhotCal.zeroPoint.flux.value" 
+              datatype="float" unit="Jy" value="3534.7"/>
+       <PARAM name="magnitudeSystem" ucd="meta.code" 
+              utype="photDM:PhotCal.magnitudeSystem.type" 
+              datatype="char" unit="" value="Vega"/>
+       <PARAM name="effectiveWavelength" ucd="em.wl.effective" 
+              utype="photDM:PhotometryFilter.spectralLocation.value" 
+              datatype="float" unit="Angstrom" value="5050.0"/>
+</GROUP>
+<GROUP name="filtersys" ID="phot_sys-Grp" ucd="phot" 
+       utype="timeseries:PhotometryPoint" /> 
+       <DESCRIPTION>GAIA Grp filter, DR2</DESCRIPTION>
+       <PARAM name="uniqueIdentifier" ucd="meta.id;instr.filter" 
+              utype="photDM:PhotometryFilter.identifier" 
+              datatype="char" unit="" value="GAIA/GAIA2.Grp"/>
+       <PARAM name="zeroPointFlux" ucd="phot.mag;arith.zp" 
+              utype="photDM:PhotCal.zeroPoint.flux.value" 
+              datatype="float" unit="Jy" value="2620.3"/>
+       <PARAM name="magnitudeSystem" ucd="meta.code" 
+              utype="photDM:PhotCal.magnitudeSystem.type" 
+              datatype="char" unit="" value="Vega"/>
+       <PARAM name="effectiveWavelength" ucd="em.wl.effective" 
+              utype="photDM:PhotometryFilter.spectralLocation.value" 
+              datatype="float" unit="Angstrom" value="7730.0"/>
+</GROUP>
+</RESOURCE>
+
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
+
+\begingroup\footnotesize
+\begin{tcolorbox}
+\begin{verbatim}
+<RESOURCE>
+<TABLE name="TIMESERIES" utype="timeseries">
+       <DESCRIPTION>Light curve in filter G </DESCRIPTION>
+<FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
+       ref="time_frame"/>
+<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
+       unit="s**-1" ref="phot_sys-G"/>
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.V" unit="mag"
+       ref="phot_sys-G"/>
+<FIELD datatype="float" name="flux_error" 
+       ucd="stat.error;phot.flux;em.opt.V" unit="s**-1"
+       ref="phot_sys-G"/>
+<DATA>
+<TABLEDATA>
+...
+</TABLEDATA>
+</DATA>
+</TABLE>
+<TABLE name="TIMESERIES" utype="timeseries">
+       <DESCRIPTION>Light curve in filter Gbp </DESCRIPTION>
+<FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
+       ref="time_frame"/>
+<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
+       unit="s**-1" ref="phot_sys-Gbp"/>
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.V" unit="mag"
+       ref="phot_sys-Gbp"/>
+<FIELD datatype="float" name="flux_error" 
+       ucd="stat.error;phot.flux;em.opt.V" unit="s**-1"
+       ref="phot_sys-Gbp"/>
+<DATA>
+<TABLEDATA>
+...
+</TABLEDATA>
+</DATA>
+</TABLE>
+<TABLE name="TIMESERIES" utype="timeseries">
+       <DESCRIPTION>Light curve in filter Gbp </DESCRIPTION>
+<FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
+       ref="time_frame"/>
+<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
+       unit="s**-1" ref="phot_sys-Grp"/>
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.V" unit="mag"
+       ref="phot_sys-Grp"/>
+<FIELD datatype="float" name="flux_error" 
+       ucd="stat.error;phot.flux;em.opt.V" unit="s**-1"
+       ref="phot_sys-Grp"/>
+<DATA>
+<TABLEDATA>
+...
+</TABLEDATA>
+</DATA>
+</TABLE>
+</RESOURCE>
+</VOTABLE>
+\end{verbatim}
+\end{tcolorbox}
+\endgroup
