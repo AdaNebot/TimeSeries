@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/MacPorts 2018.47642_8) (preloaded format=pdflatex 2019.9.4)  20 JAN 2020 09:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/MacPorts 2018.47642_8) (preloaded format=pdflatex 2019.9.4)  4 FEB 2020 09:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,7 +606,357 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box65
 \enitdp@description=\count150
 )
-(/opt/local/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+(/opt/local/share/texmf-texlive/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+(/opt/local/share/texmf-texlive/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/opt/local/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+\col@sep=\dimen181
+\ar@mcellbox=\box66
+\extrarowheight=\dimen182
+\NC@list=\toks36
+\extratabsurround=\skip58
+\backup@length=\skip59
+\ar@cellbox=\box67
+)
+\everycr=\toks37
+\minrowclearance=\skip60
+)
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2018/03/22 version 4.13 text color boxes
+
+(/opt/local/share/texmf-texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks38
+\verbatim@line=\toks39
+\verbatim@in@stream=\read2
+)
+(/opt/local/share/texmf-texlive/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/opt/local/share/texmf-texlive/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks40
+)
+(/opt/local/share/texmf-texlive/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count151
+)
+\tcb@titlebox=\box68
+\tcb@upperbox=\box69
+\tcb@lowerbox=\box70
+\tcb@phantombox=\box71
+\c@tcbbreakpart=\count152
+\c@tcblayer=\count153
+\tcolorbox@number=\count154
+\tcb@temp=\box72
+\tcb@temp=\box73
+\tcb@temp=\box74
+\tcb@temp=\box75
+\tcb@out=\write4
+\tcb@record@out=\write5
+
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '4.13'
+\c@tcbrastercolumn=\count155
+\c@tcbrasterrow=\count156
+\c@tcbraster=\count157
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '4.13'
+\tcb@waterbox=\box76
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.13'
+)) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '4.13'
+\tcb@testbox=\box77
+\tcb@totalupperbox=\box78
+\tcb@totallowerbox=\box79
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '4.13'
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip61
+
+For additional information on amsmath, use the `?' option.
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks41
+\ex@=\dimen183
+))
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen184
+)
+(/opt/local/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count158
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count159
+\leftroot@=\count160
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count161
+\DOTSCASE@=\count162
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box80
+\strutbox@=\box81
+\big@size=\dimen185
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count163
+\c@MaxMatrixCols=\count164
+\dotsspace@=\muskip11
+\c@parentequation=\count165
+\dspbrk@lvl=\count166
+\tag@help=\toks42
+\row@=\count167
+\column@=\count168
+\maxfields@=\count169
+\andhelp@=\toks43
+\eqnshift@=\dimen186
+\alignsep@=\dimen187
+\tagshift@=\dimen188
+\tagwidth@=\dimen189
+\totwidth@=\dimen190
+\lineht@=\dimen191
+\@envbody=\toks44
+\multlinegap=\skip62
+\multlinetaggap=\skip63
+\mathdisplay@stack=\toks45
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+))
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '4.13'
+\tcbfitdim=\dimen192
+\tcb@lowerfitdim=\dimen193
+\tcb@upperfitdim=\dimen194
+\tcb@cur@hbadness=\count170
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbxparse.code.tex
+Library (tcolorbox): 'tcbxparse.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/l3packages/xparse/xparse.sty
+(/opt/local/share/texmf-texlive/tex/latex/l3kernel/expl3.sty
+Package: expl3 2018/03/05 L3 programming layer (loader) 
+
+(/opt/local/share/texmf-texlive/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2018/03/05 L3 programming layer (code)
+\c_max_int=\count171
+\l_tmpa_int=\count172
+\l_tmpb_int=\count173
+\g_tmpa_int=\count174
+\g_tmpb_int=\count175
+\g__intarray_font_int=\count176
+\g__prg_map_int=\count177
+\c_log_iow=\count178
+\l_iow_line_count_int=\count179
+\l__iow_line_target_int=\count180
+\l__iow_one_indent_int=\count181
+\l__iow_indent_int=\count182
+\c_zero_dim=\dimen195
+\c_max_dim=\dimen196
+\l_tmpa_dim=\dimen197
+\l_tmpb_dim=\dimen198
+\g_tmpa_dim=\dimen199
+\g_tmpb_dim=\dimen256
+\c_zero_skip=\skip64
+\c_max_skip=\skip65
+\l_tmpa_skip=\skip66
+\l_tmpb_skip=\skip67
+\g_tmpa_skip=\skip68
+\g_tmpb_skip=\skip69
+\c_zero_muskip=\muskip12
+\c_max_muskip=\muskip13
+\l_tmpa_muskip=\muskip14
+\l_tmpb_muskip=\muskip15
+\g_tmpa_muskip=\muskip16
+\g_tmpb_muskip=\muskip17
+\l_keys_choice_int=\count183
+\c__fp_leading_shift_int=\count184
+\c__fp_middle_shift_int=\count185
+\c__fp_trailing_shift_int=\count186
+\c__fp_big_leading_shift_int=\count187
+\c__fp_big_middle_shift_int=\count188
+\c__fp_big_trailing_shift_int=\count189
+\c__fp_Bigg_leading_shift_int=\count190
+\c__fp_Bigg_middle_shift_int=\count191
+\c__fp_Bigg_trailing_shift_int=\count192
+\c__fp_rand_size_int=\count193
+\c__fp_rand_four_int=\count194
+\c__fp_rand_eight_int=\count195
+\l__sort_length_int=\count196
+\l__sort_min_int=\count197
+\l__sort_top_int=\count198
+\l__sort_max_int=\count199
+\l__sort_true_max_int=\count266
+\l__sort_block_int=\count267
+\l__sort_begin_int=\count268
+\l__sort_end_int=\count269
+\l__sort_A_int=\count270
+\l__sort_B_int=\count271
+\l__sort_C_int=\count272
+\l__tl_build_start_index_int=\count273
+\l__tl_build_index_int=\count274
+\l__tl_analysis_normal_int=\count275
+\l__tl_analysis_index_int=\count276
+\l__tl_analysis_nesting_int=\count277
+\l__tl_analysis_type_int=\count278
+\l__regex_internal_a_int=\count279
+\l__regex_internal_b_int=\count280
+\l__regex_internal_c_int=\count281
+\l__regex_balance_int=\count282
+\l__regex_group_level_int=\count283
+\l__regex_mode_int=\count284
+\c__regex_cs_in_class_mode_int=\count285
+\c__regex_cs_mode_int=\count286
+\l__regex_catcodes_int=\count287
+\l__regex_default_catcodes_int=\count288
+\c__regex_catcode_D_int=\count289
+\c__regex_catcode_S_int=\count290
+\c__regex_catcode_L_int=\count291
+\c__regex_catcode_O_int=\count292
+\c__regex_catcode_A_int=\count293
+\c__regex_all_catcodes_int=\count294
+\l__regex_show_lines_int=\count295
+\l__regex_min_state_int=\count296
+\l__regex_max_state_int=\count297
+\l__regex_left_state_int=\count298
+\l__regex_right_state_int=\count299
+\l__regex_capturing_group_int=\count300
+\l__regex_min_pos_int=\count301
+\l__regex_max_pos_int=\count302
+\l__regex_curr_pos_int=\count303
+\l__regex_start_pos_int=\count304
+\l__regex_success_pos_int=\count305
+\l__regex_curr_char_int=\count306
+\l__regex_curr_catcode_int=\count307
+\l__regex_last_char_int=\count308
+\l__regex_case_changed_char_int=\count309
+\l__regex_curr_state_int=\count310
+\l__regex_step_int=\count311
+\l__regex_min_active_int=\count312
+\l__regex_max_active_int=\count313
+\l__regex_replacement_csnames_int=\count314
+\l__regex_match_count_int=\count315
+\l__regex_min_submatch_int=\count316
+\l__regex_submatch_int=\count317
+\l__regex_zeroth_submatch_int=\count318
+\g__regex_trace_regex_int=\count319
+\c_empty_box=\box82
+\l_tmpa_box=\box83
+\l_tmpb_box=\box84
+\g_tmpa_box=\box85
+\g_tmpb_box=\box86
+\l__box_top_dim=\dimen257
+\l__box_bottom_dim=\dimen258
+\l__box_left_dim=\dimen259
+\l__box_right_dim=\dimen260
+\l__box_top_new_dim=\dimen261
+\l__box_bottom_new_dim=\dimen262
+\l__box_left_new_dim=\dimen263
+\l__box_right_new_dim=\dimen264
+\l__box_internal_box=\box87
+\l__coffin_internal_box=\box88
+\l__coffin_internal_dim=\dimen265
+\l__coffin_offset_x_dim=\dimen266
+\l__coffin_offset_y_dim=\dimen267
+\l__coffin_x_dim=\dimen268
+\l__coffin_y_dim=\dimen269
+\l__coffin_x_prime_dim=\dimen270
+\l__coffin_y_prime_dim=\dimen271
+\c_empty_coffin=\box89
+\l__coffin_aligned_coffin=\box90
+\l__coffin_aligned_internal_coffin=\box91
+\l_tmpa_coffin=\box92
+\l_tmpb_coffin=\box93
+\l__coffin_display_coffin=\box94
+\l__coffin_display_coord_coffin=\box95
+\l__coffin_display_pole_coffin=\box96
+\l__coffin_display_offset_dim=\dimen272
+\l__coffin_display_x_dim=\dimen273
+\l__coffin_display_y_dim=\dimen274
+\l__coffin_bounding_shift_dim=\dimen275
+\l__coffin_left_corner_dim=\dimen276
+\l__coffin_right_corner_dim=\dimen277
+\l__coffin_bottom_corner_dim=\dimen278
+\l__coffin_top_corner_dim=\dimen279
+\l__coffin_scaled_total_height_dim=\dimen280
+\l__coffin_scaled_width_dim=\dimen281
+)
+(/opt/local/share/texmf-texlive/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count320
+))
+Package: xparse 2018/02/21 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count321
+\g__xparse_grabber_int=\count322
+\l__xparse_m_args_int=\count323
+\l__xparse_mandatory_args_int=\count324
+\l__xparse_v_nesting_int=\count325
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tcboxverb with sig. ' O{} v ' on line 128.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tcbsidebyside with sig. ' +O{} +m +m ' on line 280.
+.................................................
+)
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/listingsutf8.sty
+Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
+
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+)
+))
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '4.13'
+(/opt/local/share/texmf-texlive/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 69.
+))
+\c@tcblisting=\count326
+)))
+(/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '4.13'
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '4.13'
+) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '4.13'
+
+(/opt/local/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrar
+yfadings.code.tex
+File: tikzlibraryfadings.code.tex 2019/02/02 v3.1.1 (3.1.1)
+
+(/opt/local/share/texmf/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2019/02/02 v3.1.1 (3.1.1)
+))) (/opt/local/share/texmf-texlive/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '4.13'
+)) (/opt/local/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/opt/local/share/texmf-texlive/tex/latex/listings/lstmisc.sty
@@ -614,42 +964,42 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 (/opt/local/share/texmf-texlive/tex/latex/multirow/multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
-\multirow@colwidth=\skip58
-\multirow@cntb=\count151
-\multirow@dima=\skip59
-\bigstrutjot=\dimen181
+\multirow@colwidth=\skip70
+\multirow@cntb=\count327
+\multirow@dima=\skip71
+\bigstrutjot=\dimen282
 )
 (./TimeSeries.aux)
 \openout1 = `TimeSeries.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
 (/opt/local/share/texmf-texlive/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count152
-\scratchdimen=\dimen182
-\scratchbox=\box66
-\nofMPsegments=\count153
-\nofMParguments=\count154
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count155
-\MPscratchDim=\dimen183
-\MPnumerator=\count156
-\makeMPintoPDFobject=\count157
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count328
+\scratchdimen=\dimen283
+\scratchbox=\box97
+\nofMPsegments=\count329
+\nofMParguments=\count330
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count331
+\MPscratchDim=\dimen284
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
+\everyMPtoPDFconversion=\toks47
 ) (/opt/local/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -667,12 +1017,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count158
+\c@lstlisting=\count334
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box67
-Package hyperref Info: Link coloring ON on input line 23.
+\AtBeginShipoutBox=\box98
+Package hyperref Info: Link coloring ON on input line 71.
 
 (/opt/local/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -680,80 +1030,164 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/opt/local/share/texmf-texlive/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count159
+\c@section@level=\count335
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 71.
+LaTeX Info: Redefining \pageref on input line 71.
+LaTeX Info: Redefining \nameref on input line 71.
 
 (./TimeSeries.out) (./TimeSeries.out)
-\@outlinefile=\write4
-\openout4 = `TimeSeries.out'.
+\@outlinefile=\write6
+\openout6 = `TimeSeries.out'.
 
  ABD: EveryShipout initializing macros
-<ivoatex/IVOA.jpg, id=11, 545.03625pt x 301.125pt>
+<ivoatex/IVOA.jpg, id=79, 545.03625pt x 301.125pt>
 File: ivoatex/IVOA.jpg Graphic file (type jpg)
 <use ivoatex/IVOA.jpg>
-Package pdftex.def Info: ivoatex/IVOA.jpg  used on input line 24.
+Package pdftex.def Info: ivoatex/IVOA.jpg  used on input line 72.
 (pdftex.def)             Requested size: 170.71652pt x 94.31728pt.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 24.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 72.
 
 (/opt/local/share/texmf-texlive/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 24.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 24.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 24.
- (./TimeSeries.toc)
-\tf@toc=\write5
-\openout5 = `TimeSeries.toc'.
-
-
-
-Package natbib Warning: Citation `std:RFC2119' on page 1 undefined on input lin
-e 32.
-
-[1
+) [1
 
 {/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ivoatex/IVOA.jp
 g>]
+(./TimeSeries.toc
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 3.
+ (/opt/local/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+))
+\tf@toc=\write7
+\openout7 = `TimeSeries.toc'.
+
+
+
+Package natbib Warning: Citation `std:RFC2119' on page 2 undefined on input lin
+e 87.
+
+[2]
+
+Package natbib Warning: Citation `VOTable1.4' on page 3 undefined on input line
+ 107.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 109.
+
+
+Package natbib Warning: Citation `VOTable1.4' on page 3 undefined on input line
+ 110.
+
+
+Package natbib Warning: Citation `TIMESYS' on page 3 undefined on input line 11
+0.
+
+
+LaTeX Warning: Reference `VOTable1.4' on page 3 undefined on input line 110.
+
+[3]
+Overfull \hbox (11.41489pt too wide) in paragraph at lines 124--124
+[]\T1/cmtt/m/n/9 <TIMESYS ID="time_frame" refposition="BARYCENTER" timeorigin="
+2455197.5"[] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 130.
+
+
+LaTeX Warning: Reference `VOTable1.4' on page 4 undefined on input line 132.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 149.
+
+
+Package natbib Warning: Citation `PhotometryDM' on page 4 undefined on input li
+ne 150.
+
+[4]
+Overfull \hbox (23.4805pt too wide) in paragraph at lines 168--169
+\T1/cmr/m/n/10.95 go-ry/Band (e. g. []\T1/cmtt/m/n/10.95 value[]="[]GAIA/GAIA.G
+/G[]"\T1/cmr/m/n/10.95 , []\T1/cmtt/m/n/10.95 value[]="[]Palomar/ZTF.r[]"\T1/cm
+r/m/n/10.95 ). 
+ []
+
+[5] (./filtersys_PARAM.tex) (./filtersys_FILTERSYS.tex) [6]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 220.
+
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 220.
+(./vot-ex1-GROUP.tex
+Overfull \hbox (1.9672pt too wide) in paragraph at lines 39--39
+[]\T1/cmtt/m/n/9 <FIELD datatype="float" name="magerr" ucd="stat.error;phot.mag
+;em.opt"[] 
+ []
+
+) [7] [8] (./vot-ex2-GROUP.tex [9]
+Overfull \vbox (45.61523pt too high) has occurred while \output is active []
+
+
+[10])
+Overfull \vbox (13.36505pt too high) has occurred while \output is active []
+
+
+[11]
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+
+LaTeX Warning: Marginpar on page 12 moved.
+
 No file TimeSeries.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 273.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 273.
  (./TimeSeries.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 273.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 273.
 Package rerunfilecheck Info: File `TimeSeries.out' has not changed.
-(rerunfilecheck)             Checksum: A02D95553E30B97FF125B1AA17CF9044;47.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
+(rerunfilecheck)             Checksum: 272B078D335797A112FFC89050A35275;619.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 273.
  ) 
 Here is how much of TeX's memory you used:
- 19333 strings out of 492649
- 355397 string characters out of 6131478
- 455832 words of memory out of 5000000
- 22880 multiletter control sequences out of 15000+600000
- 16480 words of font info for 36 fonts, out of 8000000 for 9000
+ 33383 strings out of 492649
+ 671745 string characters out of 6131478
+ 797435 words of memory out of 5000000
+ 36758 multiletter control sequences out of 15000+600000
+ 547802 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,5n,50p,437b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,9n,101p,10465b,780s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/opt/local/share/texmf-texlive/fonts/enc/dvips/cm-super/cm-super-t1.enc}</op
 t/local/share/texmf-texlive/fonts/type1/public/cm-super/sfbx1095.pfb></opt/loca
 l/share/texmf-texlive/fonts/type1/public/cm-super/sfrm1095.pfb></opt/local/shar
 e/texmf-texlive/fonts/type1/public/cm-super/sfsi1440.pfb></opt/local/share/texm
 f-texlive/fonts/type1/public/cm-super/sfso1440.pfb></opt/local/share/texmf-texl
-ive/fonts/type1/public/cm-super/sfsx1440.pfb></opt/local/share/texmf-texlive/fo
-nts/type1/public/cm-super/sfsx1728.pfb></opt/local/share/texmf-texlive/fonts/ty
-pe1/public/cm-super/sfti1095.pfb>
-Output written on TimeSeries.pdf (2 pages, 132168 bytes).
+ive/fonts/type1/public/cm-super/sfsx1200.pfb></opt/local/share/texmf-texlive/fo
+nts/type1/public/cm-super/sfsx1440.pfb></opt/local/share/texmf-texlive/fonts/ty
+pe1/public/cm-super/sfsx1728.pfb></opt/local/share/texmf-texlive/fonts/type1/pu
+blic/cm-super/sfti1095.pfb></opt/local/share/texmf-texlive/fonts/type1/public/c
+m-super/sftt0900.pfb></opt/local/share/texmf-texlive/fonts/type1/public/cm-supe
+r/sftt1095.pfb></opt/local/share/texmf-texlive/fonts/type1/public/cm-super/sftt
+1200.pfb>
+Output written on TimeSeries.pdf (12 pages, 274961 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 
