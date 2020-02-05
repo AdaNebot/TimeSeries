@@ -1,9 +1,0 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}The Time Series Structure}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}{\tt {\color {DarkRed}TIMESYS}} Element}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}{\tt {\color {DarkRed}COOSYS}} Element}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}{\tt {\color {DarkRed}FILTERSYS}} Element}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}{\tt {\color {DarkRed}TABLE}}}{7}{subsection.2.4}
-\contentsline {section}{\numberline {3}Example of VOTable serialization}{7}{section.3}
-\contentsline {subsection}{\numberline {3.1}Case 1: lightcurves in one filter}{7}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Case 2: lightcurves in multiple filters}{9}{subsection.3.2}

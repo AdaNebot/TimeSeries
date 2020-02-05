@@ -1,0 +1,47 @@
+\begin{verbatim}
+<?xml version='1.0'?>
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+<RESOURCE>
+<RESOURCE>
+<TIMESYS ID="htime" refposition="HELIOCENTER" timeorigin="JD-origin" 
+           timescale="UNKOWN"/>
+<TIMESYS ID="ttime" refposition="TOPOCENTER" timeorigin="MJD-origin" 
+           timescale="UNKOWN"/>
+<FILTERSYS ID="phot_sys_zg" uniqueIdentifier="Palomar/ZTF.g/Vega" 
+           zeroPointFlux="3963.97" magnitudeSystem="Vega" 
+           effectiveWavelength="4722.74" />
+<FILTERSYS ID="phot_sys_zr" uniqueIdentifier="Palomar/ZTF.r/Vega" 
+           zeroPointFlux="3042.0" magnitudeSystem="Vega" 
+           effectiveWavelength="6339.6" />
+</RESOURCE>
+<TABLE name="timeseries_zr">
+  <FIELD datatype="float" name="mag" ucd="phot.mag;em.opt" unit="mag" ref="phot_sys_zg">
+    <DESCRIPTION>Magnitude</DESCRIPTION>
+  </FIELD>
+  <FIELD datatype="float" name="magerr" ucd="stat.error;phot.mag;em.opt" 
+    unit="mag" ref="phot_sys_zg">
+    <DESCRIPTION>Uncertainty in mag measurement</DESCRIPTION>
+  </FIELD>
+  <DATA>
+  <TABLEDATA>
+    ...
+  </TABLEDATA>
+  </DATA>
+</TABLE>
+<TABLE name="timeseries_zr">
+  <FIELD datatype="float" name="mag" ucd="phot.mag;em.opt" unit="mag" ref="phot_sys_zr">
+    <DESCRIPTION>Magnitude</DESCRIPTION>
+  </FIELD>
+  <FIELD datatype="float" name="magerr" ucd="stat.error;phot.mag;em.opt" 
+    unit="mag" ref="phot_sys_zr">
+    <DESCRIPTION>Uncertainty in mag measurement</DESCRIPTION>
+  </FIELD>
+  <DATA>
+    <TABLEDATA>
+    ...
+    </TABLEDATA>
+  </DATA>
+</TABLE>
+</RESOURCE>
+</VOTABLE>
+\end{verbatim}
