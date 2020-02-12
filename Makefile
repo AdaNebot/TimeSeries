@@ -7,10 +7,10 @@ DOCNAME = TimeSeries
 DOCVERSION = 0.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2020-01-23
+DOCDATE = 2020-02-12
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
-DOCTYPE = NOTE
+DOCTYPE = PEN
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
