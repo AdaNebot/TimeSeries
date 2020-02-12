@@ -106,45 +106,8 @@ This document proposes the minimum metadata in VOTables to describe time series.
 
 We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \cite{VOTable1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We include in this document the definition of \elem{TIMESYS} and \elem{COOSYS} as described in VOTable and based on those, we define the new elements \elem{FILTERSYS} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. 
 
-\subsection{\elem{TIMESYS} Element}
-\elem{TIMESYS} contains information on the time scale, reference position and offset regarding the time of the observation \cite{VOTable1.4, TIMESYS}. A service providing time series \textbf{MUST} provide this element. To reference the time system defined by a \elem{TIMESYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{TIMESYS} using the VOTable \attr{ref} attribute. A \elem{TIMESYS} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it.  The elements of TIMESYS, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
-\begin{description}
-   \item[\attr{ID}] This attribute is used to reference \elem{TIMESYS} elements from the elements using the time system.
-   \item[\attr{timeorigin}] This is the time origin of the time coordinate, given as a Julian Date for the the time scale and reference point
-defined.  It is usually given as a floating point literal; for convenience, the magic strings \verb|MJD-origin| (standing
-for 2400000.5) and \verb|JD-origin| (standing for 0) are also allowed. The timeorigin attribute \textbf{MUST} be given unless the time's representation contains a year of a calendar era, in which case it \textbf{MUST NOT} be present. In VOTables, these representations currently are Gregorian calendar years with \elem{xtype}{timestamp}, or years in the Julian or Besselian calendar when a column has \verb|yr|, \verb|a| or \verb|Ba| as its unit and no time origin is given. 
-   \item[\attr{timescale}] This is the time scale used. Values \textbf{SHOULD} be taken from the IVOA \emph{timescale} vocabulary (\url{http://www.ivoa.net/rdf/timescale}). This attribute is mandatory.
-   \item[\attr{refposition}] The reference position again is a simple string, the values of which SHOULD be taken from the IVOA \emph{refposition} vocabulary (\url{http://www.ivoa.net/rdf/refposition}). This attribute is mandatory.
-\end{description}
-
-\noindent
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
-<TIMESYS ID="time_frame" refposition="BARYCENTER" timeorigin="2455197.5"
-         timescale="TCB"/>
-\end{verbatim}
-\end{tcolorbox}
-\endgroup
-
-\subsection{\elem{COOSYS} Element}
-\elem{COOSYS} element defines a celestial coordinate system, to which the components of a position on the celestial sphere refer.
-To reference the time system defined by a \elem{COOSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{COOSYS} using the VOTable \attr{ref} attribute. A \elem{COOSYS} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. The elements of \elem{COOSYS}, reported in the specification of VOTable1.4 \ref{VOTable1.4}, are the following:
-\begin{description}
-     \item[\attr{ID}] This attribute is used to reference the \elem{COOSYS} elements from the elements using the coordinate system. This attribute is mandatory.
-     \item[\attr{system}] This attribute specifies the coordinate system among \verb|"BCRS"|, \verb|"ICRS"|, \verb|"eq_FK5"|, \verb|"eq_FK4"|, \verb|"ecl_FK4"|, \verb|"ecl_FK5"|, \verb|"galactic"|, \verb|"supergalactic"|. 
-     \item[\attr{equinox}] This attribute fixes the equatorial or ecliptic systems (e.g., \verb|"J2000"| as the default for \verb|"eq_FK5"| or \verb|"B1950"| as the default for \verb|"eq_FK4"|).
-     \item[\attr{epoch}] This attribute specifies the epoch of the positions when necessary.%\todo{epoch should be able to vary...}
-\end{description}
-
-\noindent
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
-<COOSYS ID="system" epoch="J2015.5" system="ICRS"/>
-\end{verbatim}
-\end{tcolorbox}
-\endgroup
+%\input{timesys.tex}
+%\input{coosys.tex}
 
 \subsection{\elem{FILTERSYS} Element}
 \elem{FILTERSYS} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{FILTERSYS} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{FILTERSYS} using the VOTable \attr{ref} attribute. A \elem{FILTERSYS} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
