@@ -99,6 +99,24 @@ infrastructure that enable VO applications.
 This document describes how data providers can publish time series of tabular data to the Virtual Observatory. This document does not describe how data providers store or manipulate the data, it only concerns how the data are exposed to the world using well-defined metadata. This document assumes that the data provider already destributes time series as a single table, this table can contain several columns. This document does not limit the number of columns the time series can contain to those explecitely mentioned here. It only suggest metadata to the most common columns in time series.  
 
 % Notes don't need the architecture diagram
+\section{Science use cases for Time Series}
+In this section we describe a number of science use cases the proposed annotation of time series in this document will enable. We devide this science cases in different groups, according to their common requirements. 
+%What operations should clients be able to perform based on this without further user intervention?
+\subsection{Case A}
+Common requirement: Combine photometry and light curves of a given object/list of objects in the same photometric band. 
+\begin{description}
+\item Use Case 1: Supernova classification using the light curve: 
+Description: The visual light curves of the different supernova types vary in shape and amplitude, based on the underlying mechanisms of the explosion, the way that visible radiation is produced, and the transparency of the ejected material.
+\item Use Case 2: Long-term analysis of eclipsing binaries: Long-term period and light curve variations, based on the historical data and new observations. The continuous period increase can be interpreted as a mass transfer from the secondary to the primary star. The most likely explanation of the sinusoidal variation found is a light-traveltime effect due to the existence of a circumbinary object which would make BX Dra a triple system.
+\item Use Case 3: Discovering brown dwarfs by analyzing binary microlensing events (based on Shin et al. 2012)
+\item Use Case 4: Eclipsing binary systems (based on G\'omez Maqueo et al 2009)
+\end{description}
+\subsection{Case B}
+Common requirement: Combine photometry and light curves of a given object/list of objects in different photometric bands
+\begin{description}
+\item Use Case 5: Follow-up characterisation of supernovae (based on Zhang et al. arXiv:1208.6078v1)
+  Light curves at different wavelength provide different information allowing a better understanding of the physical processes related to the supernovae explosion.
+\end{description}
 
 \section{The Time Series Structure}
 \label{elem:TIMESERIES}
