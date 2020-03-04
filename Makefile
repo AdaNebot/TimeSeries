@@ -7,7 +7,7 @@ DOCNAME = TimeSeries
 DOCVERSION = 0.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2020-02-12
+DOCDATE = 2020-03-04
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = PEN
