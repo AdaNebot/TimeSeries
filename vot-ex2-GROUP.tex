@@ -67,8 +67,14 @@
 \begin{tcolorbox}
 \begin{verbatim}
 <RESOURCE>
-<TABLE name="TIMESERIES" utype="timeseries">
+<TABLE name="mytable">
        <DESCRIPTION>Light curve in filter G </DESCRIPTION>
+       <PARAM name="dataproduct_type" ucd=“meta.code.class" 
+              utype="obscore:ObsDataset.dataProductType” datatype="char" 
+              arraysize="*"  unit="" value="timeseries" />
+       <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
+              utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
+              arraysize="*" unit="" value="lightcurve" />
 <FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
        ref="time_frame"/>
 <FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 

@@ -28,6 +28,12 @@
 <RESOURCE>
 <TABLE name="TIMESERIES" utype="timeseries">
        <DESCRIPTION>Light curve in filter zg </DESCRIPTION>
+       <PARAM name="dataproduct_type" ucd=“meta.code.class" 
+              utype="obscore:ObsDataset.dataProductType” datatype="char" 
+              arraysize="*"  unit="" value="timeseries" />
+       <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
+              utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
+              arraysize="*" unit="" value="lightcurve" />
 <FIELD datatype="double" name="hjd" ucd="time.epoch;meta.main" 
        unit="d" ref="timesys">
        <DESCRIPTION>Heliocentric Julian date </DESCRIPTION>

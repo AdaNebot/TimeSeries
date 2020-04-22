@@ -199,14 +199,35 @@ For other type of time series data not explicitly defined in this document we re
 We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. 
 The \elem{TABLE} must include:
 \begin{description}
-     \item[\attrval{utype}{timeseries}] This attribute is mandatory and it MUST be set to \verb|timeseries|. 
      \item[\attr{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
+     \item[\elem{PARAM}] This element is mandatory and MUST have the following attributes:
+     \begin{description}
+        \item[\attrval{name}{dataproduct\_type}]
+        \item[\attrval{ucd}{meta.code.class}]
+        \item[\attrval{utype}{obscore:ObsDataset.dataProductType}] 
+        \item[\attrval{datatype}{char}]
+         \item[\attrval{arraysize}{"*"}]
+       \item[\attrval{unit}{""}]
+        \item[\attrval{value}{timeseries}] This attribute is mandatory and it MUST be set to \verb|timeseries|. 
+     \end{description}
+     \item[\elem{PARAM}] This element is optional and MUST have the following attributes:
+     \begin{description}
+        \item[\attrval{name}{dataproduct\_subtype}]
+        \item[\attrval{ucd}{meta.code.class}]
+        \item[\attrval{utype}{obscore:ObsDataset.dataProductSubtype}] 
+        \item[\attrval{datatype}{char}]
+        \item[\attrval{arraysize}{"*"}]
+        \item[\attrval{unit}{""}]
+        \item[\attrval{value}{lightcurve}] (could be extended to radial velocity curve or other type of timeseries data. If extended we recommend defining and using a controlled vocabulary). 
+     \end{description}
      \item One or several columns having the attribute \elem{ref} to reference to the \elem{TIMESYS} element. At least one such reference MUST be provided.
      \item One or several columns having the attribute \elem{ref} to reference to the \elem{COOSYS} (when applicable). 
      \item One or several columns having the attribute \elem{ref} to reference to each \elem{PHOTCAL} defined (when applicable). 
 \end{description}
 
-We explored other ways of annotating the data, for instance defining different tables and the relation between them as possible according to Section 4.10 of VOTable1.4, or even proposing a new XMLDATA serialization. After exploring those possibilities we conclude that the proposed solution is the most appropriate within the actual and most accepted usage of VOTablefor both existing data providers and clients.
+\input{table_TIMESERIES.tex}
+
+We explored other ways of annotating the data, for instance defining different tables and the relation between them using foreignKey as possible according to Section 4.10 of VOTable1.4, or even proposing a new XMLDATA serialization. After exploring those possibilities we conclude that the proposed solution is the most appropriate within the actual and most accepted usage of VOTablefor both existing data providers and clients.
 
 \section{Example of VOTable serialization}
 \subsection{Case 1: lightcurves in one filter}
