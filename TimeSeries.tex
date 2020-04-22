@@ -58,8 +58,8 @@ showstringspaces=False}
 \newenvironment{plain}{\begin{quote}}{\end{quote}}
 
 
-\title{Time Series Annotation in VOTable}
-\ivoagroup{Data Model}
+\title{Time Series: Annotation of light curves in VOTable}
+\ivoagroup{Not Applicable}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/AdaNebot]{Ada Nebot}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/FrancoisBonnarel]{Francois Bonnarel}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/MireilleLouys]{Mireille Louys}
@@ -70,7 +70,7 @@ showstringspaces=False}
 
 \begin{document}
 \begin{abstract}
-  This document describes a proposal to annotate in a VOTable time series data. It is limitted to the most common type of time series, i.e. tabular data containing a parameter measured as a function of time. The annotation reuses elements of exisiting Data Models when possible and defines a set of new elements. This document can be taken as a test case of the more general purpose model CADM. 
+  This document describes a proposal to annotate in a VOTable time series data. It is limited to the most common type of time series in astronomy: light curves, but it can be extended to other type of time series data easily (e.~g. radial velocities and positions). The annotation reuses elements of existing Data Models when possible and defines a set of new elements. This document can be taken as a test case of a more general purpose model. 
 \end{abstract}
 
 \section*{Acknowledgments}
@@ -98,21 +98,25 @@ This document describes how data providers can publish time series of tabular da
 \section{Science use cases for Time Series}
 In this section we describe a number of science use cases the proposed annotation of time series in this document will enable. We devide this science cases in different groups, according to their common requirements. 
 %What operations should clients be able to perform based on this without further user intervention?
-\subsection{Case A}
+\subsection{Case A: Light curves in same photometric band}
 Common requirement: Combine photometry and light curves of a given object/list of objects in the same photometric band. 
-\begin{description}
-\item Use Case 1: Supernova classification using the light curve: 
-Description: The visual light curves of the different supernova types vary in shape and amplitude, based on the underlying mechanisms of the explosion, the way that visible radiation is produced, and the transparency of the ejected material.
-\item Use Case 2: Long-term analysis of eclipsing binaries: Long-term period and light curve variations, based on the historical data and new observations. The continuous period increase can be interpreted as a mass transfer from the secondary to the primary star. The most likely explanation of the sinusoidal variation found is a light-traveltime effect due to the existence of a circumbinary object which would make BX Dra a triple system.
-\item Use Case 3: Discovering brown dwarfs by analyzing binary microlensing events (based on Shin et al. 2012)
-\item Use Case 4: Eclipsing binary systems (based on G\'omez Maqueo et al 2009)
-\end{description}
-\subsection{Case B}
-Common requirement: Combine photometry and light curves of a given object/list of objects in different photometric bands
-\begin{description}
-\item Use Case 5: Follow-up characterisation of supernovae (based on Zhang et al. arXiv:1208.6078v1)
-  Light curves at different wavelength provide different information allowing a better understanding of the physical processes related to the supernovae explosion.
-\end{description}
+
+\subsubsection{Use Case 1: Supernova classification using the light curve}
+The visual light curves of the different supernova types vary in shape and amplitude, based on the underlying mechanisms of the explosion, the way that visible radiation is produced, and the transparency of the ejected material.
+\subsubsection{Use Case 2: Long-term analysis of variable stars}
+Long-term period and light curve variations, based on the historical data and new observations. The continuous period increase can be interpreted as a mass transfer from the secondary to the primary star. The most likely explanation of the sinusoidal variation found is a light-traveltime effect due to the existence of a circumbinary object which would make BX Dra a triple system.
+\subsubsection{Use Case 3: Discovering brown dwarfs by analyzing binary microlensing events}
+Microlensing events show characteristic light curve variations which can be used to determine the type of system producing it. %(based on Shin et al. 2012)
+
+%\subsubsection{Use Case 4: Eclipsing binary systems - phase}
+% Based on G\'omez Maqueo et al 2009)
+
+\subsection{Case B: light curves in different photometric bands}
+Common requirement: Combine photometry and light curves of a given object/list of objects in different photometric bands.
+
+\subsubsection{Use Case 4: Follow-up characterisation of supernovae}
+%based on Zhang et al. arXiv:1208.6078v1)
+Light curves at different wavelength provide different information allowing a better understanding of the physical processes related to the supernovae explosion.
 
 \section{The Time Series Structure}
 \label{elem:TIMESERIES}
