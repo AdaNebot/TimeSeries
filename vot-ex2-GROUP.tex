@@ -67,22 +67,22 @@
 \begin{tcolorbox}
 \begin{verbatim}
 <RESOURCE>
-<TABLE name="mytable">
-       <DESCRIPTION>Light curve in filter G </DESCRIPTION>
-       <PARAM name="dataproduct_type" ucd=“meta.code.class" 
-              utype="obscore:ObsDataset.dataProductType” datatype="char" 
-              arraysize="*"  unit="" value="timeseries" />
-       <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
-              utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
-              arraysize="*" unit="" value="lightcurve" />
+<TABLE name="mytableg">
+<DESCRIPTION>Light curve in filter G </DESCRIPTION>
+<PARAM name="dataproduct_type" ucd=“meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+       arraysize="*"  unit="" value="timeseries" />
+<PARAM name="dataproduct_subtype" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
+       arraysize="*" unit="" value="lightcurve" />
 <FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
        ref="time_frame"/>
-<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
+<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt" 
        unit="s**-1" ref="phot_sys-G"/>
-<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.V" unit="mag"
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt" unit="mag"
        ref="phot_sys-G"/>
 <FIELD datatype="float" name="flux_error" 
-       ucd="stat.error;phot.flux;em.opt.V" unit="s**-1"
+       ucd="stat.error;phot.flux;em.opt" unit="s**-1"
        ref="phot_sys-G"/>
 <DATA>
 <TABLEDATA>
@@ -90,8 +90,14 @@
 </TABLEDATA>
 </DATA>
 </TABLE>
-<TABLE name="TIMESERIES" utype="timeseries">
+<TABLE name="mytableGbp">
        <DESCRIPTION>Light curve in filter Gbp </DESCRIPTION>
+<PARAM name="dataproduct_type" ucd=“meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+       arraysize="*"  unit="" value="timeseries" />
+<PARAM name="dataproduct_subtype" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
+       arraysize="*" unit="" value="lightcurve" />
 <FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
        ref="time_frame"/>
 <FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
@@ -107,16 +113,22 @@
 </TABLEDATA>
 </DATA>
 </TABLE>
-<TABLE name="TIMESERIES" utype="timeseries">
-       <DESCRIPTION>Light curve in filter Gbp </DESCRIPTION>
+<TABLE name="mytableGrp">
+       <DESCRIPTION>Light curve in filter Grp </DESCRIPTION>
+<PARAM name="dataproduct_type" ucd=“meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+       arraysize="*"  unit="" value="timeseries" />
+<PARAM name="dataproduct_subtype" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
+       arraysize="*" unit="" value="lightcurve" />
 <FIELD datatype="double" name="obs_time" ucd="time.epoch" unit="d" 
        ref="time_frame"/>
-<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.V" 
+<FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.R" 
        unit="s**-1" ref="phot_sys-Grp"/>
-<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.V" unit="mag"
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.R" unit="mag"
        ref="phot_sys-Grp"/>
 <FIELD datatype="float" name="flux_error" 
-       ucd="stat.error;phot.flux;em.opt.V" unit="s**-1"
+       ucd="stat.error;phot.flux;em.opt.R" unit="s**-1"
        ref="phot_sys-Grp"/>
 <DATA>
 <TABLEDATA>
