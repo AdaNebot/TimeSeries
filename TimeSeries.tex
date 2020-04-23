@@ -80,7 +80,7 @@ This work has been supported by the ESCAPE project (the European Science Cluster
 
 The words ``MUST'', ``SHALL'', ``SHOULD'', ``MAY'', ``RECOMMENDED'', and
 ``OPTIONAL'' (in upper or lower case) used in this document are to be
-interpreted as described in IETF standard RFC2119 \citep{std:RFC2119}.
+interpreted as described in IETF standard RFC2119 \citet{std:RFC2119}.
 
 The \emph{Virtual Observatory (VO)} is a
 general term for a collection of federated resources that can be used
@@ -122,17 +122,17 @@ Light curves at different wavelength provide different information allowing a be
 \label{elem:TIMESERIES}
 This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters, positions, radial velocities) and sometimes even include different types of data (e.~g. spectra, or images). 
 
-We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \cite{VOTable1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \elem{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
+We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \citet{std:VOTABLE1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \elem{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
 
 %\input{timesys.tex}
 %\input{coosys.tex}
 
 \subsection{\elem{PHOTCAL} Element}
-\elem{PHOTCAL} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \cite{PhotometryDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{PHOTCAL} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{PHOTCAL} using the VOTable \attr{ref} attribute. A \elem{PHOTCAL} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
+\elem{PHOTCAL} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{std:PDM}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{PHOTCAL} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{PHOTCAL} using the VOTable \attr{ref} attribute. A \elem{PHOTCAL} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
 
 Each \elem{PHOTCAL} is defined as a \elem{GROUP} with the following mandatory terms:
 \begin{description}
-     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable \cite[][see Section 3.2], and in this context it will help clients interpret the contents of the \elem{GROUP}. 
+     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable \cite[][see Section 3.2]{std:VOTABLE1.4}, and in this context it will help clients interpret the contents of the \elem{GROUP}. 
      \item[\attr{ID}] This attribute is used to reference the \elem{PHOTCAL} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
      \item[\attr{DESCRIPTION}] This attribute is used to describe the \elem{PHOTCAL} \elem{GROUP}. This attribute is optional, but recommended.
      \item[\attrval{utype}{timeseries:PhotometryPoint}]
@@ -196,8 +196,8 @@ For other type of time series data not explicitly defined in this document we re
 %\input{GROUP.tex}
 \subsection{\elem{TABLE}}
 %\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
-We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. 
-The \elem{TABLE} must include:
+We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also propose to annotate the \elem{TABLE} as a timeseries using \elem{PARAM}s defined as elements from Obscore \citep{std:OBSCORE1.1}.   
+The \elem{TABLE} must include: 
 \begin{description}
      \item[\attr{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
      \item[\elem{PARAM}] This element is mandatory and MUST have the following attributes:
@@ -227,7 +227,7 @@ The \elem{TABLE} must include:
 
 \input{table_TIMESERIES.tex}
 
-We explored other ways of annotating the data, for instance defining different tables and the relation between them using foreignKey as possible according to Section 4.10 of VOTable1.4, or even proposing a new XMLDATA serialization. After exploring those possibilities we conclude that the proposed solution is the most appropriate within the actual and most accepted usage of VOTablefor both existing data providers and clients.
+We explored other ways of annotating the data, for instance defining different tables and the relation between them using foreignKey as possible according to Section 4.10 of VOTable \citep{std:VOTABLE1.4}, or even proposing a new XMLDATA serialization. After exploring those possibilities we conclude that the proposed solution is the most appropriate within the actual and most accepted usage of VOTablefor both existing data providers and clients.
 
 \section{Example of VOTable serialization}
 \subsection{Case 1: lightcurves in one filter}
@@ -251,20 +251,19 @@ Let us consider now consider a more complicated case, in which the time series i
 In those cases this complicates the annotation and the need of being able to reference rows (as well as columns) becomes an issue. It is to overcome such problem, that we propose to use different \elem{TABLE} elements for different types of products. We propose therefore to annotate a VOTable as shown in the following example: 
 
 \begingroup
-\input{vot-ex2-GROUP.tex}
+\input{vot-ex2-GROUP.tex} 
 \endgroup    
 
 %To avoid referencing columns, which would make things a bit more complicated, we propose to create different \elem{TABLE} elements, one for each filter. This, although reduntant in the definition of some of the columns, will ease combining timeseries from the client side. 
 
 %Alternative 2: Use the GROUP name=key thing and a different table to define the relation between elements. This 
-%Alternative 3: Another possible solution would be to create a new XMLDATA serialization which would allow to tag rows, as proposed in Appendix A.8 of \cite{VOTable1.4}. But wouldn't that break the interoperability? 
+%Alternative 3: Another possible solution would be to create a new XMLDATA serialization which would allow to tag rows, as proposed in Appendix A.8 of \cite{std:VOTABLE1.4}. But wouldn't that break the interoperability? 
 
 
-\todo{Do we have to say something about claiming a new capability in the registry? }
-\todo{Do we want to add a summary table with utype, UCD1+, Meaning, Default value, Data type, required?} 
+%\todo{Do we have to say something about claiming a new capability in the registry? }
+%\todo{Do we want to add a summary table with utype, UCD1+, Meaning, Default value, Data type, required?} 
 
 %\input{timeseriesDM.tex}
 \bibliography{ivoatex/ivoabib,ivoatex/docrepo,TimeSeries}
-
 
 \end{document}
