@@ -3,14 +3,13 @@
 \begin{tcolorbox}
 \begin{verbatim}
 <?xml version="1.0" 
-<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
-<RESOURCE>
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.4">
 <RESOURCE>
 <COOSYS ID="system" epoch="J2015.5" system="ICRS"/>
 <TIMESYS ID="time_frame" refposition="BARYCENTER" 
          timeorigin="2455197.5" timescale="TCB"/>
 <GROUP name="photcal" ID="phot_sys-G" ucd="phot" 
-       utype="timeseries:PhotometryPoint" /> 
+       utype="timeseries:PhotometryPoint" > 
        <DESCRIPTION>GAIA G filter, DR2</DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
@@ -26,7 +25,7 @@
               datatype="float" unit="Angstrom" value="6230.0"/>
 </GROUP>
 <GROUP name="photcal" ID="phot_sys-Gbp" ucd="phot" 
-       utype="timeseries:PhotometryPoint" /> 
+       utype="timeseries:PhotometryPoint" > 
        <DESCRIPTION>GAIA Gbp filter, DR2</DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
@@ -42,7 +41,7 @@
               datatype="float" unit="Angstrom" value="5050.0"/>
 </GROUP>
 <GROUP name="photcal" ID="phot_sys-Grp" ucd="phot" 
-       utype="timeseries:PhotometryPoint" /> 
+       utype="timeseries:PhotometryPoint" > 
        <DESCRIPTION>GAIA Grp filter, DR2</DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
