@@ -1,14 +1,10 @@
-\noindent
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
-<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.4">
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
 <RESOURCE>
 <COOSYS ID="ICRS" system="ICRS"  epoch="J2015"/>
 <TIMESYS ID="timesys" refposition="HELIOCENTER" 
          timeorigin="0" timescale="UNKOWN"/>
 <GROUP name="photcal" ID="phot_sys" ucd="phot" 
-       utype="timeseries:PhotometryPoint" /> 
+       utype="timeseries:PhotometryPoint" > 
        <DESCRIPTION>Photometric system description </DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
@@ -28,8 +24,8 @@
 <RESOURCE>
 <TABLE name="mytable" >
 <DESCRIPTION>Light curve in filter zg </DESCRIPTION>
-<PARAM name="dataproduct_type" ucd=“meta.code.class" 
-       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+<PARAM name="dataproduct_type" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType" datatype="char" 
        arraysize="*"  unit="" value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
@@ -58,6 +54,3 @@
 </TABLE>
 </RESOURCE>
 </VOTABLE>
-\end{verbatim}
-\end{tcolorbox}
-\endgroup

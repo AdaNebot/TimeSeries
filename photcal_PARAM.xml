@@ -1,7 +1,3 @@
-\noindent
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
 <GROUP name="photcal" ID="phot_sys" ucd="phot" 
        utype="timeseries:PhotometryPoint" > 
        <DESCRIPTION>Photometric system description </DESCRIPTION>
@@ -18,6 +14,3 @@
               utype="photDM:PhotometryFilter.spectralLocation.value" 
               datatype="float" unit="Angstrom" value="4722.74"/>
 </GROUP>
-\end{verbatim}
-\end{tcolorbox}
-\endgroup

@@ -1,9 +1,4 @@
-\noindent
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
-<?xml version="1.0" 
-<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.4">
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
 <RESOURCE>
 <COOSYS ID="system" epoch="J2015.5" system="ICRS"/>
 <TIMESYS ID="time_frame" refposition="BARYCENTER" 
@@ -58,18 +53,11 @@
 </GROUP>
 </RESOURCE>
 
-\end{verbatim}
-\end{tcolorbox}
-\endgroup
-
-\begingroup\footnotesize
-\begin{tcolorbox}
-\begin{verbatim}
 <RESOURCE>
 <TABLE name="mytableg">
 <DESCRIPTION>Light curve in filter G </DESCRIPTION>
-<PARAM name="dataproduct_type" ucd=“meta.code.class" 
-       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+<PARAM name="dataproduct_type" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType" datatype="char" 
        arraysize="*"  unit="" value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
@@ -85,14 +73,14 @@
        ref="phot_sys-G"/>
 <DATA>
 <TABLEDATA>
-...
+	<!-- rows omitted -->
 </TABLEDATA>
 </DATA>
 </TABLE>
 <TABLE name="mytableGbp">
        <DESCRIPTION>Light curve in filter Gbp </DESCRIPTION>
-<PARAM name="dataproduct_type" ucd=“meta.code.class" 
-       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+<PARAM name="dataproduct_type" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType" datatype="char" 
        arraysize="*"  unit="" value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
@@ -108,14 +96,14 @@
        ref="phot_sys-Gbp"/>
 <DATA>
 <TABLEDATA>
-...
+  <!-- rows omitted -->
 </TABLEDATA>
 </DATA>
 </TABLE>
 <TABLE name="mytableGrp">
        <DESCRIPTION>Light curve in filter Grp </DESCRIPTION>
-<PARAM name="dataproduct_type" ucd=“meta.code.class" 
-       utype="obscore:ObsDataset.dataProductType” datatype="char" 
+<PARAM name="dataproduct_type" ucd="meta.code.class" 
+       utype="obscore:ObsDataset.dataProductType" datatype="char" 
        arraysize="*"  unit="" value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
@@ -131,12 +119,9 @@
        ref="phot_sys-Grp"/>
 <DATA>
 <TABLEDATA>
-...
+	<!-- rows omitted -->
 </TABLEDATA>
 </DATA>
 </TABLE>
 </RESOURCE>
 </VOTABLE>
-\end{verbatim}
-\end{tcolorbox}
-\endgroup
