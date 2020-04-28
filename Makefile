@@ -14,7 +14,8 @@ DOCTYPE = NOTE
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).tex photcal_FILTERSYS.xml photcal_PARAM.xml vot-ex1-GROUP.xml
+SOURCES = $(DOCNAME).tex photcal_FILTERSYS.xml photcal_PARAM.xml \
+	vot-ex1-GROUP.xml vot-ex2-GROUP.xml table_TIMESERIES.xml
 
 # List of pixel image files to be included in submitted package 
 FIGURES =
