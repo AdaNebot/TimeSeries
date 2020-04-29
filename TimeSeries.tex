@@ -196,34 +196,52 @@ For other type of time series data not explicitly defined in this document we re
 %\input{GROUP.tex}
 \subsection{\elem{TABLE}}
 %\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
-We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also propose to annotate the \elem{TABLE} as a timeseries using \elem{PARAM}s defined as elements from Obscore \citep{2017ivoa.spec.0509L}.
-The \elem{TABLE} must include: 
-\begin{description}
-     \item[\attr{DESCRIPTION}] Human readable text describing the time series. This element is mandatory. 
-     \item[\elem{PARAM}] This element is mandatory and MUST have the following attributes:
-     \begin{description}
-        \item[\attrval{name}{dataproduct\_type}]
-        \item[\attrval{ucd}{meta.code.class}]
-        \item[\attrval{utype}{obscore:ObsDataset.dataProductType}] 
-        \item[\attrval{datatype}{char}]
-         \item[\attrval{arraysize}{"*"}]
-       \item[\attrval{unit}{""}]
-        \item[\attrval{value}{timeseries}] This attribute is mandatory and it MUST be set to \verb|timeseries|. 
-     \end{description}
-     \item[\elem{PARAM}] This element is optional and MUST have the following attributes:  
-     \begin{description}
-        \item[\attrval{name}{dataproduct\_subtype}]
-        \item[\attrval{ucd}{meta.code.class}]
-        \item[\attrval{utype}{obscore:ObsDataset.dataProductSubtype}] 
-        \item[\attrval{datatype}{char}]
-        \item[\attrval{arraysize}{"*"}]
-        \item[\attrval{unit}{""}]
-        \item[\attrval{value}{lightcurve}] (could be extended to radial velocity curve or other type of timeseries data. If extended we recommend defining and using a controlled vocabulary). 
-     \end{description}
-     \item One or several columns having the attribute \elem{ref} to reference to the \elem{TIMESYS} element. At least one such reference MUST be provided.
-     \item One or several columns having the attribute \elem{ref} to reference to the \elem{COOSYS} (when applicable). 
-     \item One or several columns having the attribute \elem{ref} to reference to each \elem{PHOTCAL} defined (when applicable). 
-\end{description}
+
+We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also propose to annotate the \elem{TABLE} as a timeseries using \elem{PARAM}s defined as elements from Obscore \citep{2017ivoa.spec.0509L}:
+The \elem{TABLE} must include:
+
+\begin{itemize}
+\item A human-readable \attr{DESCRIPTION} that ideally conveys enough
+human-readable information that basic scientific use of the time series
+is possible without referring to literature.
+
+\item A \elem{PARAM} describing the obscore dataproduct type with the 
+following mandatory attributes:
+     \begin{compactitem}
+        \item \attrval{name}{dataproduct\_type}
+        \item \attrval{ucd}{meta.code.class}
+        \item \attrval{utype}{obscore:ObsDataset.dataProductType}
+        \item \attrval{datatype}{char}
+        \item \attrval{arraysize}{"*"}
+        \item \attrval{value}{timeseries}
+     \end{compactitem}
+
+\item A \elem{PARAM} describing the dataproduct subtype with the
+following mandatory attributes:
+
+     \begin{compactitem}
+        \item \attrval{name}{dataproduct\_subtype}
+        \item \attrval{ucd}{meta.code.class}
+        \item \attrval{utype}{obscore:ObsDataset.dataProductSubtype}
+        \item \attrval{datatype}{char}
+        \item \attrval{arraysize}{"*"}
+     \end{compactitem}
+
+The parameter's \xmlel{value} attribute should be set to
+\texttt{lightcurve} for time series following this note, including the
+photometric part.  Other values, for instance for radial velocity
+curves, could be used in the future; a suitable controlled vocabulary
+would be created at that point.
+
+     \item One or several columns referencing a \elem{TIMESYS} element.
+     Clients can use any such column as the independent variable of the
+     time series.
+
+     \item One or more columns referencing a \texttt{PHOTCAL}
+     \elem{GROUP}.  Clients can use any such column as a dependent
+     variable of a time series.  Non-photometric time series will
+     replace this mechanism some some other requirement.
+\end{itemize}
 
 \input{table_TIMESERIES.tex}
 
