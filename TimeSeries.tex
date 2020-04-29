@@ -10,7 +10,7 @@
 \usepackage{listings}
 \lstloadlanguages{XML,sh}
 \lstset{flexiblecolumns=true,tagstyle=\ttfamily,
-showstringspaces=False}
+showstringspaces=False,basicstyle=\footnotesize}
 
 \usepackage{multirow}
 
@@ -92,19 +92,21 @@ infrastructure that enable VO applications.
 
 
 \section{Introduction}
-This document describes how data providers can publish time series of tabular data to the Virtual Observatory. This document does not describe how data providers store or manipulate the data, it only concerns how the data are exposed to the world using well-defined metadata. This document assumes that the data provider already destributes time series as a single table, this table can contain several columns. This document does not limit the number of columns the time series can contain to those explecitely mentioned here. It only suggest metadata to the most common columns in time series.  
+This document describes how data providers can publish time series in tabular form to the Virtual Observatory by prescribing metadata for a minimal set of columns required to describe a (photometric) time series.  It does not describe how data providers store or manipulate the data, it is only concerned with how the data is exposed to the world using well-defined metadata. We assume that the data provider already distributes time series as a single table, where this table may contain several columns containing photometry, and it may contain columns not explicitly mentioned here. 
 
 % Notes don't need the architecture diagram
 \section{Science use cases for Time Series}
-In this section we describe a number of science use cases the proposed annotation of time series in this document will enable. We devide this science cases in different groups, according to their common requirements. 
+In this section we describe a number of science use cases the proposed annotation of time series in this document will enable. We divide the science cases into different groups according to their common requirements. 
 %What operations should clients be able to perform based on this without further user intervention?
 \subsection{Case A: Light curves in same photometric band}
 Common requirement: Combine photometry and light curves of a given object/list of objects in the same photometric band. 
 
 \subsubsection{Use Case 1: Supernova classification using the light curve}
 The visual light curves of the different supernova types vary in shape and amplitude, based on the underlying mechanisms of the explosion, the way that visible radiation is produced, and the transparency of the ejected material.
+
 \subsubsection{Use Case 2: Long-term analysis of variable stars}
-Long-term period and light curve variations, based on the historical data and new observations. The continuous period increase can be interpreted as a mass transfer from the secondary to the primary star. The most likely explanation of the sinusoidal variation found is a light-traveltime effect due to the existence of a circumbinary object which would make BX Dra a triple system.
+Long-term period and light curve variations, based on the historical data and new observations. The continuous period increase can be interpreted as a mass transfer from the secondary to the primary star. The most likely explanation of a sinusoidal variation would be a light travel time effect due to the existence of a circumbinary object as in the BX Dra triple system.
+
 \subsubsection{Use Case 3: Discovering brown dwarfs by analyzing binary microlensing events}
 Microlensing events show characteristic light curve variations which can be used to determine the type of system producing it. %(based on Shin et al. 2012)
 
@@ -120,22 +122,38 @@ Light curves at different wavelength provide different information allowing a be
 
 \section{The Time Series Structure}
 \label{elem:TIMESERIES}
-This document proposes the minimum metadata in VOTables to describe time series. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.~g. different filters, positions, radial velocities) and sometimes even include different types of data (e.~g. spectra, or images). 
+This document proposes the minimal metadata required in VOTables to support our science cases. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.g., different filters, positions, radial velocities) and sometimes even include different types of data (e.g., spectra, or images). 
 
+<<<<<<< HEAD
+We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \citet{std:VOTABLE1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \texttt{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
+=======
 We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable starting from version~1.4 \citep{2019ivoa.spec.1021O} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \elem{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
+>>>>>>> upstream/master
 
 %\input{timesys.tex}
 %\input{coosys.tex}
 
+<<<<<<< HEAD
+\subsection{The \texttt{PHOTCAL} Group}
+The \texttt{PHOTCAL} group contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{std:PDM}. A service providing time series of the type light-curve (e.g., magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \texttt{PHOTCAL} \elem{GROUP}, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the group using the VOTable \attr{ref} attribute. A \texttt{PHOTCAL} group referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
+=======
 \subsection{\elem{PHOTCAL} Element}
 \elem{PHOTCAL} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{2013ivoa.spec.1005S}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{PHOTCAL} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{PHOTCAL} using the VOTable \attr{ref} attribute. A \elem{PHOTCAL} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
+>>>>>>> upstream/master
 
-Each \elem{PHOTCAL} is defined as a \elem{GROUP} with the following mandatory terms:
+Each photometric calibration is defined as a \elem{GROUP} with the following mandatory terms:
 \begin{description}
+<<<<<<< HEAD
+     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable \cite[][see Section 3.2]{std:VOTABLE1.4}, and in this context it will help clients interpret the contents of the \elem{GROUP}. 
+     \item[\attr{ID}] This attribute is used to reference the \texttt{PHOTCAL} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
+     \item[\attr{DESCRIPTION}] This attribute is used to describe the \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but recommended.
+     \item[\attrval{utype}{timeseries:PhotometryPoint}]\todo{Something ought to be here, if nothing else the relation of this to the fixed name.} \dots
+=======
      \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable (\citet{2019ivoa.spec.1021O}, section 3.2), and in this context it will help clients interpret the contents of the \elem{GROUP}. 
      \item[\attr{ID}] This attribute is used to reference the \elem{PHOTCAL} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
      \item[\attr{DESCRIPTION}] This attribute is used to describe the \elem{PHOTCAL} \elem{GROUP}. This attribute is optional, but recommended.
      \item[\attrval{utype}{timeseries:PhotometryPoint}]
+>>>>>>> upstream/master
 \end{description}
 
 The attributes of this \elem{GROUP} are defined as \elem{PARAM}s containing the following information: 
@@ -157,7 +175,7 @@ The attributes of this \elem{GROUP} are defined as \elem{PARAM}s containing the 
     \item[\attrval{unit}{unit}]
     \item[\attrval{value}{value}]
 \end{description}
-\item[\elem{magnitudeSystem}] Magnitude system associated to this instance (Vega, AB, ...). This element MUST have the following attributes:
+\item[\elem{magnitudeSystem}] Magnitude system associated to this instance (Vega, AB, \dots). This element MUST have the following attributes:
 \begin{description}
     \item[\attrval{name}{magnitudeSystem}]
     \item[\attrval{ucd}{meta.code}] 
@@ -177,20 +195,20 @@ The attributes of this \elem{GROUP} are defined as \elem{PARAM}s containing the 
 \end{description}
 \end{description}
 
-Proposed annotation example for a \elem{PHOTCAL} element: 
-\input{photcal_PARAM.tex}
+Proposed annotation example for a \texttt{PHOTCAL} \elem{GROUP}: 
+\lstinputlisting[language=XML]{photcal_PARAM.xml}
 
 
-While following the same approach as for \elem{COOSYS} and \elem{TIMESYS} would result in a more compact annotation, we decide to define this element as a \elem{GROUP} to allow for some flexibility on the data provider side. We are aware that this implies clients to work around more complex annotations. We hope to alleviate that by following the exact \attr{name} and \attr{utype} convention as proposed in this document.
+While following the same approach as for \elem{COOSYS} and \elem{TIMESYS} would result in a more compact annotation, we decided to define this element as a \elem{GROUP} to allow for some flexibility on the data provider side. We are aware that this implies clients to work around more complex annotations. We hope to alleviate that by following the exact \attr{name} and \attr{utype} convention as proposed in this document.
 
 The alternative to doing this, and which would simplify the annotation, is to bring this \elem{GROUP} element closer to the \elem{COOSYS} and \elem{TIMESYS} elements by fixing the units of the \attr{zeroPointFlux} and the \attr{effectiveWavelength} to Jy and Angstrom respectively and add it to future versions of VOTable. This would look as follows: 
 
-\input{photcal_FILTERSYS.tex}
+\lstinputlisting[language=XML]{photcal_FILTERSYS.xml}
 
 
 %\input{VELSYS}
 
-For other type of time series data not explicitly defined in this document we reccomend to use the appropriate UCD1+ in agreement with \url{http://www.ivoa.net/documents/UCD1+/index.html}. The data provider is responsible for providing accurate metadata for the elements here described.
+For types of time series data not explicitly defined in this document we recommend to use the appropriate UCD1+ \citep{2005ivoa.spec.0819D}. The data provider is responsible for providing accurate metadata for the elements here described.
 
 
 %\input{GROUP.tex}
@@ -198,6 +216,7 @@ For other type of time series data not explicitly defined in this document we re
 %\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
 
 We propose to use the \elem{TABLE} element for describing the contents of the time series data itself. One \elem{TABLE} element MUST be present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also propose to annotate the \elem{TABLE} as a timeseries using \elem{PARAM}s defined as elements from Obscore \citep{2017ivoa.spec.0509L}:
+
 The \elem{TABLE} must include:
 
 \begin{itemize}
@@ -243,18 +262,20 @@ would be created at that point.
      replace this mechanism some some other requirement.
 \end{itemize}
 
-\input{table_TIMESERIES.tex}
+\lstinputlisting[language=XML]{table_TIMESERIES.xml}
 
 We explored other ways of annotating the data, for instance defining different tables and the relation between them using foreignKey as possible according to Section 4.10 of VOTable \citep{2019ivoa.spec.1021O}, or even proposing a new XMLDATA serialization. After exploring those possibilities we conclude that the proposed solution is the most appropriate within the actual and most accepted usage of VOTablefor both existing data providers and clients.
 
-\section{Example of VOTable serialization}
+\section{Examples Serializations}
 \subsection{Case 1: lightcurves in one filter}
 Let us consider the simplest time series case possible: a table containing only three columns:
 \begin{center}
    \emph{time, magnitude, magnitude error}
 \end{center}
-the minimum VOTable would look like this:
-\input{vot-ex1-GROUP.tex}
+
+The minimum VOTable would look like this:
+
+\lstinputlisting[language=XML]{vot-ex1-GROUP.xml}
 
 This annotation would also work in the case of tables including multiple light filters in the form
 \begin{center}
@@ -268,9 +289,7 @@ Let us consider now consider a more complicated case, in which the time series i
 \end{center}
 In those cases this complicates the annotation and the need of being able to reference rows (as well as columns) becomes an issue. It is to overcome such problem, that we propose to use different \elem{TABLE} elements for different types of products. We propose therefore to annotate a VOTable as shown in the following example: 
 
-\begingroup
-\input{vot-ex2-GROUP.tex} 
-\endgroup    
+\lstinputlisting[language=XML]{vot-ex2-GROUP.xml} 
 
 %To avoid referencing columns, which would make things a bit more complicated, we propose to create different \elem{TABLE} elements, one for each filter. This, although reduntant in the definition of some of the columns, will ease combining timeseries from the client side. 
 
