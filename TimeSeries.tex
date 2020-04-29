@@ -124,36 +124,21 @@ Light curves at different wavelength provide different information allowing a be
 \label{elem:TIMESERIES}
 This document proposes the minimal metadata required in VOTables to support our science cases. We assume that the tabular data can contain multiple rows for each astronomical source and for mixed types of time series (e.g., different filters, positions, radial velocities) and sometimes even include different types of data (e.g., spectra, or images). 
 
-<<<<<<< HEAD
-We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable1.4 \citet{std:VOTABLE1.4} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \texttt{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
-=======
+
 We propose using some elements previously defined, such as \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable starting from version~1.4 \citep{2019ivoa.spec.1021O} and define a set of new elements as well as how to structure these elements. The aim is to be able to combine multiple time series when they have common elements as described in this document. We define a \elem{GROUP} element called \elem{PHOTCAL} following the same type of structure. If these elements were to be added or modified in future versions of VOTable it should be straight forward to update this document. This note is inspired by a previous annotation strategy developed for annotating photometric data in VOTables \citep{note:seb2010-1}.
->>>>>>> upstream/master
 
 %\input{timesys.tex}
 %\input{coosys.tex}
 
-<<<<<<< HEAD
 \subsection{The \texttt{PHOTCAL} Group}
-The \texttt{PHOTCAL} group contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{std:PDM}. A service providing time series of the type light-curve (e.g., magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \texttt{PHOTCAL} \elem{GROUP}, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the group using the VOTable \attr{ref} attribute. A \texttt{PHOTCAL} group referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
-=======
-\subsection{\elem{PHOTCAL} Element}
-\elem{PHOTCAL} contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{2013ivoa.spec.1005S}. A service providing time series of the type light-curve (e.~g. magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \elem{PHOTCAL} element, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the \elem{PHOTCAL} using the VOTable \attr{ref} attribute. A \elem{PHOTCAL} element referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
->>>>>>> upstream/master
+The \texttt{PHOTCAL} group contains information on the photometric system of the observations. This element is partially asociated to the intermediate class PhotCal of the Photometry Data Model \citep{2013ivoa.spec.1005S}. A service providing time series of the type light-curve (e.g., magnitudes, fluxes) \textbf{MUST} provide this element. To reference the photometric system defined by a \texttt{PHOTCAL} \elem{GROUP}, \elem{FIELD}s (and possibly \elem{PARAM}s) \textbf{MUST} reference the group using the VOTable \attr{ref} attribute. A \texttt{PHOTCAL} group referenced via a \attr{ref} attribute \textbf{SHOULD} appear before the element that references it. 
 
 Each photometric calibration is defined as a \elem{GROUP} with the following mandatory terms:
 \begin{description}
-<<<<<<< HEAD
-     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable \cite[][see Section 3.2]{std:VOTABLE1.4}, and in this context it will help clients interpret the contents of the \elem{GROUP}. 
+     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable (\citet{2019ivoa.spec.1021O}, section 3.2), and in this context it will help clients interpret the contents of the \elem{GROUP}. 
      \item[\attr{ID}] This attribute is used to reference the \texttt{PHOTCAL} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
      \item[\attr{DESCRIPTION}] This attribute is used to describe the \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but recommended.
-     \item[\attrval{utype}{timeseries:PhotometryPoint}]\todo{Something ought to be here, if nothing else the relation of this to the fixed name.} \dots
-=======
-     \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP} \textbf{MUST} be set to \verb|PHOTCAL|. We realize that although this proposed usage of the \attr{name} is not common, it is not forbidden by VOTable (\citet{2019ivoa.spec.1021O}, section 3.2), and in this context it will help clients interpret the contents of the \elem{GROUP}. 
-     \item[\attr{ID}] This attribute is used to reference the \elem{PHOTCAL} \elem{GROUP} from the elements using the photometric system. This attribute needs to be unique within the document so that it can be referenced by \elem{FIELD}s and is mandatory.
-     \item[\attr{DESCRIPTION}] This attribute is used to describe the \elem{PHOTCAL} \elem{GROUP}. This attribute is optional, but recommended.
-     \item[\attrval{utype}{timeseries:PhotometryPoint}]
->>>>>>> upstream/master
+     \item[\attrval{utype}{timeseries:PhotometryPoint}]\todo{Something ought to be here, if nothing else the relation of this to the fixed name.\ada{do we need it, we could drop it since there is the PARAM with the Obscore type/subtype}} \dots
 \end{description}
 
 The attributes of this \elem{GROUP} are defined as \elem{PARAM}s containing the following information: 
