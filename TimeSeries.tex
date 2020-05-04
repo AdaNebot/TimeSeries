@@ -223,7 +223,7 @@ containing the following information:
     \item[\attrval{utype}{photDM:PhotometryFilter.identifier}]
     \item[\attrval{datatype}{char}]
     \item[\attrval{value}{value}] Value SHOULD follow the syntax:
-      Facility/Subcategory/Band (e.~g. \attrval{value}{GAIA/GAIA.G/G},
+      Facility/Subcategory.Band (e.~g. \attrval{value}{GAIA/GAIA.G},
       \attrval{value}{Palomar/ZTF.r}).
 \end{description}
 \item[\elem{zeroPointFlux}] Photometric zero point associated to this
@@ -233,7 +233,7 @@ containing the following information:
     \item[\attrval{ucd}{phot.mag;arith.zp}]
     \item[\attrval{utype}{photDM:PhotCal.zeroPoint.flux.value}]
     \item[\attrval{datatype}{datatype}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \item[\elem{magnitudeSystem}] Magnitude system associated to this
