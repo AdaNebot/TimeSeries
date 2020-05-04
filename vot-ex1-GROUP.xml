@@ -4,7 +4,7 @@
 <TIMESYS ID="timesys" refposition="HELIOCENTER" 
          timeorigin="0" timescale="UNKOWN"/>
 <GROUP name="photcal" ID="phot_sys" ucd="phot" 
-       utype="timeseries:PhotometryPoint" > 
+       utype="PhotDM:PhotCal" > 
        <DESCRIPTION>Photometric system description </DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
@@ -26,7 +26,7 @@
 <DESCRIPTION>Light curve in filter zg </DESCRIPTION>
 <PARAM name="dataproduct_type" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductType" datatype="char" 
-       arraysize="*"  unit="" value="timeseries" />
+       arraysize="*"  value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
        arraysize="*" unit="" value="lightcurve" />

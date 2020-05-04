@@ -1,10 +1,11 @@
 <TABLE name="mytable" 
-  <DESCRIPTION>Light curve in my favorite filter  </DESCRIPTION>
+  <DESCRIPTION>Light curve showing an eclipse for SDSSJ121258.25-012310.1
+  </DESCRIPTION>
   <PARAM name="dataproduct_type" ucd="meta.code.class" 
          utype="obscore:ObsDataset.dataProductType" datatype="char" 
-         arraysize="*"  unit="" value="timeseries" />
+         arraysize="*"  value="timeseries" />
   <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
          utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
-         arraysize="*" unit="" value="lightcurve" />
+         arraysize="*" value="lightcurve" />
   <!-- perhaps more PARAMs, then COLUMNs and data -->
 </TABLE>
