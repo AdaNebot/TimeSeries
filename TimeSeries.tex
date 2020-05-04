@@ -158,18 +158,17 @@ series (e.g., different filters, positions, radial velocities) and
 sometimes even include different types of data (e.g., spectra, or
 images).
 
-
 We propose using some elements previously defined, such as
 \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable starting
-from version~1.4 \citep{2019ivoa.spec.1021O} and define a set of new
-elements as well as how to structure these elements. The aim is to be
-able to combine multiple time series when they have common elements as
-described in this document. We define a \elem{GROUP} element called
-\elem{PHOTCAL} following the same type of structure. If these elements
+from version~1.4 \citep{2019ivoa.spec.1021O} and we define a \elem{GROUP}
+element called \elem{PHOTCAL} following the same type of structure.
+If these elements
 were to be added or modified in future versions of VOTable it should
 be straight forward to update this document. This note is inspired by
 a previous annotation strategy developed for annotating photometric
-data in VOTables \citep{note:seb2010-1}.
+data in VOTables \citep{note:seb2010-1}. The aim is to be able to combine
+multiple time series when they have common elements or attributes as
+described in this document. 
 
 %\input{timesys.tex}
 %\input{coosys.tex}
