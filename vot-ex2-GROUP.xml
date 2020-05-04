@@ -112,14 +112,31 @@
        ref="time_frame"/>
 <FIELD datatype="float" name="flux" ucd="phot.flux;em.opt.R" 
        unit="s**-1" ref="phot_sys-Grp"/>
-<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.R" unit="mag"
-       ref="phot_sys-Grp"/>
 <FIELD datatype="float" name="flux_error" 
        ucd="stat.error;phot.flux;em.opt.R" unit="s**-1"
        ref="phot_sys-Grp"/>
+<FIELD datatype="float" name="mag" ucd="phot.mag;em.opt.R" unit="mag"
+       ref="phot_sys-Grp"/>
 <DATA>
 <TABLEDATA>
-	<!-- rows omitted -->
+<TR>
+<TD>1717.1972140917503</TD>
+<TD>104330.38392429441</TD>
+<TD>52.233033211792666</TD>
+<TD>16.292145</TD>
+</TR>
+<TR>
+<TD>1717.2712151581559</TD>
+<TD>103891.24605171905</TD>
+<TD>122.24067642146714</TD>
+<TD>15.292145</TD>
+</TR>
+<TR>
+<TD>1751.07879002084</TD>
+<TD>16.345</TD>
+<TD>103405.47276680778</TD>
+<TD>88.01483009455063</TD>
+</TR>
 </TABLEDATA>
 </DATA>
 </TABLE>
