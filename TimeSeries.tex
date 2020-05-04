@@ -158,18 +158,17 @@ series (e.g., different filters, positions, radial velocities) and
 sometimes even include different types of data (e.g., spectra, or
 images).
 
-
 We propose using some elements previously defined, such as
 \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable starting
-from version~1.4 \citep{2019ivoa.spec.1021O} and define a set of new
-elements as well as how to structure these elements. The aim is to be
-able to combine multiple time series when they have common elements as
-described in this document. We define a \elem{GROUP} element called
-\elem{PHOTCAL} following the same type of structure. If these elements
+from version~1.4 \citep{2019ivoa.spec.1021O} and we define a \elem{GROUP}
+element called \elem{PHOTCAL} following the same type of structure.
+If these elements
 were to be added or modified in future versions of VOTable it should
 be straight forward to update this document. This note is inspired by
 a previous annotation strategy developed for annotating photometric
-data in VOTables \citep{note:seb2010-1}.
+data in VOTables \citep{note:seb2010-1}. The aim is to be able to combine
+multiple time series when they have common elements or attributes as
+described in this document. 
 
 %\input{timesys.tex}
 %\input{coosys.tex}
@@ -205,6 +204,7 @@ following mandatory terms:
        \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but
        recommended.
      \item[\attrval{utype}{PhotDM:PhotCal}] utype inherited from PhotDM.
+     \item[\attrval{ucd}{phot}] Recommended UCD fo the GROUP.
        %\todo{Something
        %ought to be here, if nothing else the relation of this to the
        %fixed name.\ada{do we need it, we could drop it since there is
@@ -216,15 +216,14 @@ containing the following information:
 \begin{description}
 \item[\elem{filterIdentifier}] This is the \elem{PARAM} element to
   uniquely identify the zero point assigned to a filter and to a
-  specific photometric system. This element MUST have the following
-  attributes:
+  specific photometric system. This element is a string and MUST
+  have the following attributes:
 \begin{description}
     \item[\attrval{name}{filterIdentifier}]
     \item[\attrval{ucd}{meta.id;instr.filter}]
     \item[\attrval{utype}{photDM:PhotometryFilter.identifier}]
-    \item[\attrval{datatype}{char}]
     \item[\attrval{value}{value}] Value SHOULD follow the syntax:
-      Facility/Subcategory/Band (e.~g. \attrval{value}{GAIA/GAIA.G/G},
+      Facility/Subcategory.Band (e.~g. \attrval{value}{GAIA/GAIA2.G},
       \attrval{value}{Palomar/ZTF.r}).
 \end{description}
 \item[\elem{zeroPointFlux}] Photometric zero point associated to this
@@ -234,28 +233,27 @@ containing the following information:
     \item[\attrval{ucd}{phot.mag;arith.zp}]
     \item[\attrval{utype}{photDM:PhotCal.zeroPoint.flux.value}]
     \item[\attrval{datatype}{datatype}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \item[\elem{magnitudeSystem}] Magnitude system associated to this
-  instance (Vega, AB, \dots). This element MUST have the following
-  attributes:
+  instance (Vega, AB, \dots). This element is a string and MUST have the
+  following attributes:
 \begin{description}
     \item[\attrval{name}{magnitudeSystem}]
     \item[\attrval{ucd}{meta.code}]
     \item[\attrval{utype}{photDM:PhotCal.magnitudeSystem.type}]
-    \item[\attrval{datatype}{char}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \item[\elem{effectiveWavelength}] Effective wavelength of the filter
-  in this instance. This element MUST have the following attributes:
+  in this instance. This element is numeric and MUST have the following
+  attributes:
 \begin{description}
     \item[\attrval{name}{effectiveWavelength}]
     \item[\attrval{ucd}{em.wl.effective}]
     \item[\attrval{utype}{photDM:PhotometryFilter.spectralLocation.value}]
-    \item[\attrval{datatype}{float}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \end{description}
@@ -295,7 +293,7 @@ providing accurate metadata for the elements here described.
 %\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
 
 We propose to use the \elem{TABLE} element for describing the contents
-of the time series data itself. One \elem{TABLE} element MUST be
+of the time series data itself. On or more \elem{TABLE} elements MUST be
 present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also
 propose to annotate the \elem{TABLE} as a timeseries using
 \elem{PARAM}s defined as elements from Obscore
@@ -314,8 +312,6 @@ The \elem{TABLE} must include:
         \item \attrval{name}{dataproduct\_type}
         \item \attrval{ucd}{meta.code.class}
         \item \attrval{utype}{obscore:ObsDataset.dataProductType}
-        \item \attrval{datatype}{char}
-        \item \attrval{arraysize}{"*"}
         \item \attrval{value}{timeseries}
      \end{compactitem}
 
@@ -326,8 +322,6 @@ The \elem{TABLE} must include:
         \item \attrval{name}{dataproduct\_subtype}
         \item \attrval{ucd}{meta.code.class}
         \item \attrval{utype}{obscore:ObsDataset.dataProductSubtype}
-        \item \attrval{datatype}{char}
-        \item \attrval{arraysize}{"*"}
      \end{compactitem}
 
 The parameter's \xmlel{value} attribute should be set to

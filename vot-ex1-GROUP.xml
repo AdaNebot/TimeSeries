@@ -8,13 +8,13 @@
        <DESCRIPTION>Photometric system description </DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
               utype="photDM:PhotometryFilter.identifier" 
-              datatype="char" unit="" value="Palomar/ZTF.g"/>
+              datatype="char" value="Palomar/ZTF.g"/>
        <PARAM name="zeroPointFlux" ucd="phot.mag;arith.zp" 
               utype="photDM:PhotCal.zeroPoint.flux.value" 
               datatype="float" unit="Jy" value="3963.97"/>
        <PARAM name="magnitudeSystem" ucd="meta.code" 
               utype="photDM:PhotCal.magnitudeSystem.type" 
-              datatype="char" unit="" value="Vega"/>
+              datatype="char" value="Vega"/>
        <PARAM name="effectiveWavelength" ucd="em.wl.effective" 
               utype="photDM:PhotometryFilter.spectralLocation.value" 
               datatype="float" unit="Angstrom" value="4722.74"/>
@@ -29,7 +29,7 @@
        arraysize="*"  value="timeseries" />
 <PARAM name="dataproduct_subtype" ucd="meta.code.class" 
        utype="obscore:ObsDataset.dataProductSubtype" datatype="char" 
-       arraysize="*" unit="" value="lightcurve" />
+       arraysize="*" value="lightcurve" />
 <FIELD datatype="double" name="hjd" ucd="time.epoch;meta.main" 
        unit="d" ref="timesys">
        <DESCRIPTION>Heliocentric Julian date </DESCRIPTION>
@@ -48,6 +48,16 @@
     <TD>2458662.830467246</TD>
     <TD>16.292145</TD>
     <TD>0.02101822</TD>
+  </TR>
+  <TR>
+    <TD>2458663.897563067</TD>
+    <TD>16.538640</TD>
+    <TD>0.01287631</TD>
+  </TR>
+  <TR>
+    <TD>2458664.850875846</TD>
+    <TD>16.301866</TD>
+    <TD>0.02027767</TD>
   </TR>
 </TABLEDATA>
 </DATA>
