@@ -204,6 +204,7 @@ following mandatory terms:
        \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but
        recommended.
      \item[\attrval{utype}{PhotDM:PhotCal}] utype inherited from PhotDM.
+     \item[\attrval{ucd}{phot}] Recommended UCD fo the GROUP.
        %\todo{Something
        %ought to be here, if nothing else the relation of this to the
        %fixed name.\ada{do we need it, we could drop it since there is
@@ -215,15 +216,15 @@ containing the following information:
 \begin{description}
 \item[\elem{filterIdentifier}] This is the \elem{PARAM} element to
   uniquely identify the zero point assigned to a filter and to a
-  specific photometric system. This element MUST have the following
-  attributes:
+  specific photometric system. This element is a string and MUST
+  have the following attributes:
 \begin{description}
     \item[\attrval{name}{filterIdentifier}]
     \item[\attrval{ucd}{meta.id;instr.filter}]
     \item[\attrval{utype}{photDM:PhotometryFilter.identifier}]
     \item[\attrval{datatype}{char}]
     \item[\attrval{value}{value}] Value SHOULD follow the syntax:
-      Facility/Subcategory.Band (e.~g. \attrval{value}{GAIA/GAIA.G},
+      Facility/Subcategory.Band (e.~g. \attrval{value}{GAIA/GAIA2.G},
       \attrval{value}{Palomar/ZTF.r}).
 \end{description}
 \item[\elem{zeroPointFlux}] Photometric zero point associated to this
@@ -237,24 +238,24 @@ containing the following information:
     \item[\attrval{value}{value}]
 \end{description}
 \item[\elem{magnitudeSystem}] Magnitude system associated to this
-  instance (Vega, AB, \dots). This element MUST have the following
-  attributes:
+  instance (Vega, AB, \dots). This element is a string and MUST have the
+  following attributes:
 \begin{description}
     \item[\attrval{name}{magnitudeSystem}]
     \item[\attrval{ucd}{meta.code}]
     \item[\attrval{utype}{photDM:PhotCal.magnitudeSystem.type}]
     \item[\attrval{datatype}{char}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \item[\elem{effectiveWavelength}] Effective wavelength of the filter
-  in this instance. This element MUST have the following attributes:
+  in this instance. This element is numeric and MUST have the following
+  attributes:
 \begin{description}
     \item[\attrval{name}{effectiveWavelength}]
     \item[\attrval{ucd}{em.wl.effective}]
     \item[\attrval{utype}{photDM:PhotometryFilter.spectralLocation.value}]
-    \item[\attrval{datatype}{float}]
-    \item[\attrval{unit}{unit}]
+    \item[\attrval{unit}{<unit>}]
     \item[\attrval{value}{value}]
 \end{description}
 \end{description}
