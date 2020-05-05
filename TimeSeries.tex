@@ -59,8 +59,10 @@
   Michel}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/DaveMorris]{Dave
   Morris}
+\author[http://www.ivoa.net/twiki/bin/view/IVOA/MarkTaylor]{Mark Taylor}
 \author[http://www.ivoa.net/twiki/bin/view/IVOA/JesusSalgado]{Jesus
-  Salgado} \editor{Ada Nebot}
+  Salgado}
+\editor{Ada Nebot}
 
 \begin{document}
 \begin{abstract}
@@ -293,9 +295,8 @@ providing accurate metadata for the elements here described.
 %\todo{We could propose to define one \elem{TABLE} element to describe the content of each timeseries with common metadata (e.~g. one per filter) with no \elem{DATA}, and to add in a separate \elem{TABLE} element the \elem{DATA} part wich will referece the approprate \elem{TABLE} element. But to be honest I am not sure about the pros and contras of that at the moment of writing.} 
 
 We propose to use the \elem{TABLE} element for describing the contents
-of the time series data itself. On or more \elem{TABLE} elements MUST be
-present for each \elem{PHOTCAL} \elem{GROUP} element defined. We also
-propose to annotate the \elem{TABLE} as a timeseries using
+of the time series data itself. 
+We also propose to annotate the \elem{TABLE} as a timeseries using
 \elem{PARAM}s defined as elements from Obscore
 \citep{2017ivoa.spec.0509L}:
 

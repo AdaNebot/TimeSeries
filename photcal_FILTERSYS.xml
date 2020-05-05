@@ -1,3 +1,4 @@
+<!-- Rejected idea -->
 <FILTERSYS ID="phot_sys" filterIdentifier="Palomar/ZTF.g/Vega" 
            zeroPointFlux="3963.97" magnitudeSystem="Vega" 
            effectiveWavelength="4722.74" />
