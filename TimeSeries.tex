@@ -69,7 +69,7 @@
   This document describes a proposal to annotate in a VOTable time
   series data. It is limited to the most common type of time series in
   astronomy: light curves, but it can be extended to other type of
-  time series data easily (e.~g. radial velocities and positions). The
+  time series data easily (e.g.\ radial velocities and positions). The
   annotation reuses elements of existing Data Models when possible and
   defines a set of new elements. This document can be taken as a test
   case of a more general purpose model.
@@ -78,16 +78,16 @@
 \section*{Acknowledgments}
 This work has been supported by the ESCAPE project (the European
 Science Cluster of Astronomy \& Particle Physics ESFRI Research
-Infrastructures) that has received funding from the European Union’s
+Infrastructures) that has received funding from the European Union's
 Horizon 2020 research and innovation programme under the Grant
-Agreement n. 824064.
+Agreement n.\ 824064.
 
 \section*{Conformance-related definitions}
 
 The words ``MUST'', ``SHALL'', ``SHOULD'', ``MAY'', ``RECOMMENDED'',
 and ``OPTIONAL'' (in upper or lower case) used in this document are to
 be interpreted as described in IETF standard RFC2119
-\citet{std:RFC2119}.
+\citep{std:RFC2119}.
 
 The \emph{Virtual Observatory (VO)} is a general term for a collection
 of federated resources that can be used to conduct astronomical
@@ -135,8 +135,8 @@ as in the BX Dra triple system.
 
 \subsubsection{Use Case 3: Discovering brown dwarfs by analyzing binary microlensing events}
 Microlensing events show characteristic light curve variations which
-can be used to determine the type of system producing it. %(based on
-Shin et al. 2012)
+can be used to determine the type of system producing it.
+%(based on Shin et al. 2012)
 
 %\subsubsection{Use Case 4: Eclipsing binary systems - phase}
 % Based on G\'omez Maqueo et al 2009)
@@ -338,7 +338,7 @@ would be created at that point.
      \item One or more columns referencing a \texttt{PHOTCAL}
        \elem{GROUP}.  Clients can use any such column as a dependent
        variable of a time series.  Non-photometric time series will
-       replace this mechanism some some other requirement.
+       replace this mechanism with some other requirement.
 \end{itemize}
 
 \lstinputlisting[language=XML]{table_TIMESERIES.xml}
@@ -349,10 +349,10 @@ possible according to Section 4.10 of VOTable
 \citep{2019ivoa.spec.1021O}, or even proposing a new XMLDATA
 serialization. After exploring those possibilities we conclude that
 the proposed solution is the most appropriate within the actual and
-most accepted usage of VOTablefor both existing data providers and
+most accepted usage of VOTable for both existing data providers and
 clients.
 
-\section{Examples Serializations}
+\section{Example Serializations}
 \subsection{Case 1: lightcurves in one filter}
 Let us consider the simplest time series case possible: a table
 containing only three columns:
