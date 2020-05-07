@@ -3,7 +3,7 @@
 <COOSYS ID="ICRS" system="ICRS"  epoch="J2015"/>
 <TIMESYS ID="timesys" refposition="HELIOCENTER" 
          timeorigin="0" timescale="UNKNOWN"/>
-<GROUP name="photcal" ID="phot_sys" ucd="phot" 
+<GROUP name="PHOTCAL" ID="phot_sys" ucd="phot" 
        utype="PhotDM:PhotCal" > 
        <DESCRIPTION>Photometric system description </DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
