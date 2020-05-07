@@ -39,6 +39,7 @@
             \def\requiredattr#1{{\tt\bf{\fg{DarkBlue}#1}}}
             \def\elem#1{{\tt{\fg{DarkRed}#1}}}
             \def\attrval#1#2{{\tt{\fg{DarkRed}#1}="{\fg{DarkPurple}#2}"}}
+            \def\attrvalonly#1{{\tt"{\fg{DarkPurple}#1}"}}
             \def\elemdef#1#2{{\tt\fg{blue}<}{\tt{\fg{DarkRed}#1}#2}{\tt\fg{blue}>}}
             \def\literalvalue#1{{\tt"}{{\fg{DarkPurple}#1}}{\tt"}}
             \def\order{$\oplus$ } \def\unorder{{\large $\circ$ }}
@@ -70,8 +71,8 @@
   series data. It is limited to the most common type of time series in
   astronomy: light curves, but it can be extended to other type of
   time series data easily (e.g.\ radial velocities and positions). The
-  annotation reuses elements of existing Data Models when possible and
-  defines a set of new elements. This document can be taken as a test
+  annotation reuses parts of existing Data Models when possible and
+  defines a set of new conventions. This document can be taken as a test
   case of a more general purpose model.
 \end{abstract}
 
@@ -163,10 +164,8 @@ images).
 We propose using some elements previously defined, such as
 \elem{TIMESYS} and \elem{COOSYS} (when applicable) in VOTable starting
 from version~1.4 \citep{2019ivoa.spec.1021O} and we define a \elem{GROUP}
-element called \elem{PHOTCAL} following the same type of structure.
-If these elements
-were to be added or modified in future versions of VOTable it should
-be straight forward to update this document. This note is inspired by
+element with \attrval{name}{PHOTCAL} following the same type of structure.
+This note is inspired by
 a previous annotation strategy developed for annotating photometric
 data in VOTables \citep{note:seb2010-1}. The aim is to be able to combine
 multiple time series when they have common elements or attributes as
@@ -175,7 +174,7 @@ described in this document.
 %\input{timesys.tex}
 %\input{coosys.tex}
 
-\subsection{The \texttt{PHOTCAL} Group}
+\subsection{The \texttt{PHOTCAL} \elem{GROUP}}
 The \texttt{PHOTCAL} group contains information on the photometric
 system of the observations. This element is partially asociated to the
 intermediate class PhotCal of the Photometry Data Model
@@ -189,7 +188,7 @@ element. To reference the photometric system defined by a
 references it.
 
 Each photometric calibration is defined as a \elem{GROUP} with the
-following mandatory terms:
+following terms:
 \begin{description}
      \item[\attrval{name}{PHOTCAL}] The name of the \elem{GROUP}
        \textbf{MUST} be set to \verb|PHOTCAL|. We realize that
@@ -202,61 +201,63 @@ following mandatory terms:
        photometric system. This attribute needs to be unique within
        the document so that it can be referenced by \elem{FIELD}s and
        is mandatory.
-     \item[\attr{DESCRIPTION}] This attribute is used to describe the
-       \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but
-       recommended.
-     \item[\attrval{utype}{PhotDM:PhotCal}] utype inherited from PhotDM.
-     \item[\attrval{ucd}{phot}] Recommended UCD fo the GROUP.
+     \item[\attrval{utype}{PhotDM:PhotCal}] utype inherited from PhotDM,
+       mandatory.
+     \item[\attrval{ucd}{phot}] Recommended UCD for the GROUP.
        %\todo{Something
        %ought to be here, if nothing else the relation of this to the
        %fixed name.\ada{do we need it, we could drop it since there is
        %  the PARAM with the Obscore type/subtype}} \dots
+     \item[\elem{DESCRIPTION}] This sub-element is used to describe the
+       \texttt{PHOTCAL} \elem{GROUP}. This attribute is optional, but
+       recommended.
 \end{description}
 
-The attributes of this \elem{GROUP} are defined as \elem{PARAM}s
+The characteristics of this \elem{GROUP} are declared as \elem{PARAM}
+child elements
 containing the following information:
 \begin{description}
-\item[\elem{filterIdentifier}] This is the \elem{PARAM} element to
+\item[filterIdentifier:] This is the \elem{PARAM} element to
   uniquely identify the zero point assigned to a filter and to a
-  specific photometric system. This element is a string and MUST
+  specific photometric system. Its value is a string, and it MUST
   have the following attributes:
 \begin{description}
     \item[\attrval{name}{filterIdentifier}]
     \item[\attrval{ucd}{meta.id;instr.filter}]
     \item[\attrval{utype}{photDM:PhotometryFilter.identifier}]
-    \item[\attrval{value}{value}] Value SHOULD follow the syntax:
-      Facility/Subcategory.Band (e.~g. \attrval{value}{GAIA/GAIA2.G},
+    \item[\attr{value}:] a string that SHOULD follow the syntax:
+      Facility/Subcategory.Band (e.g.\ \attrval{value}{GAIA/GAIA2.G},
       \attrval{value}{Palomar/ZTF.r}).
 \end{description}
-\item[\elem{zeroPointFlux}] Photometric zero point associated to this
-  instance. This element MUST have the following attributes:
+\item[zeroPointFlux:] Photometric zero point associated to this
+  instance. This \elem{PARAM}'s value is numeric, and it MUST
+  have the following attributes:
 \begin{description}
     \item[\attrval{name}{zeroPointFlux}]
     \item[\attrval{ucd}{phot.mag;arith.zp}]
     \item[\attrval{utype}{photDM:PhotCal.zeroPoint.flux.value}]
-    \item[\attrval{datatype}{datatype}]
-    \item[\attrval{unit}{<unit>}]
-    \item[\attrval{value}{value}]
+    \item[\attr{unit}:] flux units
+    \item[\attr{value}:] zero point flux value
 \end{description}
-\item[\elem{magnitudeSystem}] Magnitude system associated to this
-  instance (Vega, AB, \dots). This element is a string and MUST have the
+\item[magnitudeSystem:] Magnitude system associated to this
+  instance (Vega, AB, \dots). This \elem{PARAM}'s value is a string,
+  and it MUST have the
   following attributes:
 \begin{description}
     \item[\attrval{name}{magnitudeSystem}]
     \item[\attrval{ucd}{meta.code}]
     \item[\attrval{utype}{photDM:PhotCal.magnitudeSystem.type}]
-    \item[\attrval{unit}{<unit>}]
-    \item[\attrval{value}{value}]
+    \item[\attr{value}:] system name
 \end{description}
-\item[\elem{effectiveWavelength}] Effective wavelength of the filter
-  in this instance. This element is numeric and MUST have the following
-  attributes:
+\item[effectiveWavelength:] Effective wavelength of the filter
+  in this instance. This \elem{PARAM}'s value is numeric,
+  and it MUST have the following attributes:
 \begin{description}
     \item[\attrval{name}{effectiveWavelength}]
     \item[\attrval{ucd}{em.wl.effective}]
     \item[\attrval{utype}{photDM:PhotometryFilter.spectralLocation.value}]
-    \item[\attrval{unit}{<unit>}]
-    \item[\attrval{value}{value}]
+    \item[\attr{unit}:] wavelength units
+    \item[\attr{value}:] effective wavelength value
 \end{description}
 \end{description}
 
@@ -325,8 +326,8 @@ The \elem{TABLE} must include:
         \item \attrval{utype}{obscore:ObsDataset.dataProductSubtype}
      \end{compactitem}
 
-The parameter's \xmlel{value} attribute should be set to
-\texttt{lightcurve} for time series following this note, including the
+The parameter's \attr{value} attribute should be set to
+\attrvalonly{lightcurve} for time series following this note, including the
 photometric part.  Other values, for instance for radial velocity
 curves, could be used in the future; a suitable controlled vocabulary
 would be created at that point.
