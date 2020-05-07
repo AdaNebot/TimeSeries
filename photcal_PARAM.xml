@@ -1,4 +1,4 @@
-<GROUP name="photcal" ID="phot_sys" ucd="phot" 
+<GROUP name="PHOTCAL" ID="phot_sys" ucd="phot" 
        utype="PhotDM:PhotCal" > 
        <DESCRIPTION>Photometric system description </DESCRIPTION>
        <PARAM name="filterIdentifier" ucd="meta.id;instr.filter" 
